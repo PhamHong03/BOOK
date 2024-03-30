@@ -1,0 +1,36 @@
+
+.register__title{    
+    text-align: center;
+    margin-top: 30px;
+    /* display: flex; */
+    flex-direction: column;
+    
+}
+.register__title h2{
+    margin: 10px 0px;
+}
+.register__title span{
+    margin: 10px 0px;
+}
+.register__form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register__form .form{
+    width: 50%;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-top: 20px;
+    background-color: #F5F5F5;
+}
+.register__form .form .mb-3 i{
+    margin:0px 10px;
+}
+.register__form .form p a{
+    color: blue;
+}
+.register__form .form .btn-submit{
+    width: 30%;
+}

@@ -8,6 +8,7 @@ use App\Http\Services\Slider\SliderService;
 use App\Http\Services\Product\ProductService;
 use App\Models\Product;
 use App\Models\Menu;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -61,19 +62,15 @@ class MainController extends Controller
             'products' => $this->product->get()
         ]);
     } 
-    public function contact(){
-        return view('contact', [
-            'title' => 'LIÊN HỆ '
-        ]);
-    } 
-    public function register(){
-        return view('register', [
-            'title' => 'ĐĂNG KÝ'
-        ]);
-    } 
-    public function login(){
-        return view('login', [
-            'title' => 'ĐĂNG NHẬP'
-        ]);
-    } 
+
+   
+
+    public function testEmail(){
+
+        $name = 'Phạm Hồng';
+        Mail::send('emails.test', compact('name'), function($email) use($name){
+            $email->subject('Thư cảm ơn');
+            $email->to('hongb2110012@student.ctu.edu.vn', $name);
+        });
+    }
 }

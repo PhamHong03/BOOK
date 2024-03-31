@@ -9,8 +9,11 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuControllers;
 use App\Http\Controllers\ProductControllers;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +25,13 @@ use App\Http\Controllers\ProductControllers;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+#client
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('client.index');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('admin/users/login',[LoginController::class,'index'])->name('login');
 Route::post('admin/users/login/store',[LoginController::class,'store']);
 
@@ -106,12 +112,14 @@ Route::middleware(['auth'])->group(function() {
    
 });
 
+Route::get('test-email', [MainController::class,'testEmail']);
 
 Route::get('/', [MainController::class, 'index']);
 
 Route::get('/products', [MainController::class, 'products'])->name('products');
 
-Route::get('/contact', [MainController::class, 'contact'])->name('contact');
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
 Route::post('/services/load-product', [MainController::class, 'loadProduct']);
 
@@ -135,13 +143,14 @@ Route::get('carts/delete/{id}', [CartController::class, 'remove']);
 
 Route::post('carts/delete', [CartController::class, 'removeAll']);
 
-Route::get('/register', [MainController::class, 'register'])->name('register');
+Route::get('/register', [UserController::class, 'register'])->name('register');
 
-Route::get('/login', [MainController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login');
 
 // Route::get('/forgotPW', [AuthManagerController::class, 'forgotPW'])->name('forgotPW');
 
 
 // Route::get('/category', [CategoryController::class, 'index'])->name('index');
 // Route::get('/category/create', [CategoryController::class, 'create'])->name('create');
+
 

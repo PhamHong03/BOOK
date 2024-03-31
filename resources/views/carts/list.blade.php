@@ -113,7 +113,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn btn-success bmtn-confirm" name="pay-all" name="pay-all" type="submit" style="width: 92%">Thanh Toán</button>
+                <button class="btn btn-success bmtn-confirm" name="pay-all" name="pay-all" type="submit" >Thanh Toán</button>
             </div>           
         </div>  
        

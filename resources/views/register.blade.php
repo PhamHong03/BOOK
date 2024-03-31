@@ -11,19 +11,22 @@
             <form action="" method="POST" class="form">
                 @csrf
                 <div class="mb-3 d-flex align-items-center mt-2">
-                    <i class="fa-solid fa-user"></i><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Họ và tên">
+                    <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="name" placeholder="Họ và tên">
                 </div>
                 <div class="mb-3 d-flex align-items-center">
-                    <i class="fa-solid fa-envelope"></i><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                    <i class="fa-solid fa-envelope"></i><input type="email" class="form-control" name="email" placeholder="Email">
                 </div>
                 <div class="mb-3 d-flex align-items-center">
-                    <i class="fa-solid fa-phone"></i><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Số điện thoại">
+                    <i class="fa-solid fa-phone"></i><input type="text" class="form-control" name="phone" placeholder="Số điện thoại">
+                </div>
+                {{-- <div class="mb-3 d-flex align-items-center">
+                    <i class="fa-solid fa-location-dot"></i><input type="text" class="form-control" name="address" placeholder="Địa chỉ">
+                </div> --}}
+                <div class="mb-3 d-flex align-items-center">
+                    <i class="fa-solid fa-key"></i> <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                 </div>
                 <div class="mb-3 d-flex align-items-center">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Địa chỉ">
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <i class="fa-solid fa-key"></i> <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Mật khẩu">
+                    <i class="fa-solid fa-key"></i> <input type="password" class="form-control" name="confirmPassword" placeholder= "Nhập lại mật khẩu">
                 </div>
                 <div class="mb-3 d-flex ms-3">
                     <input type="checkbox"> <span>Hiện mật khẩu</span>

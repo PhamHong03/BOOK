@@ -37,11 +37,16 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            // 'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => 'smtp.gmail.com',
+            // 'port' => env('MAIL_PORT', 587),
+            'port' =>  587,
+            // 'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'encryption' => 'tls',
+            // 'username' => env('MAIL_USERNAME'),
+            'username' => 'hongb2110012@student.ctu.edu.vn',
+            // 'password' => env('MAIL_PASSWORD'),
+            'password' => 'woli nugl bgdc yvpp',
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
@@ -108,8 +113,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        // 'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => 'hongb2110012@student.ctu.edu.vn',
+        // 'name' => env('MAIL_FROM_NAME', 'Example'),
+        'name' => 'BookStore',
     ],
 
     /*

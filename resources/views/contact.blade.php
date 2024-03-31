@@ -61,9 +61,8 @@
                             @enderror
                         </div>
                         <div class="mb-3 d-flex ms-3 " style="justify-content: center">   
-                            <input class="btn" type="submit" value="Gửi yêu cầu">
-                        </div>
-                        
+                            <input class="btn btn-pink" type="submit" value="Gửi yêu cầu">
+                        </div>                        
                     </form>
                 </div>
             </div>

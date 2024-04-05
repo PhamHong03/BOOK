@@ -9,14 +9,24 @@
         <div class="register__form">
             <form action="" method="POST" class="form">
                 @csrf
-                <div class="mb-3 d-flex align-items-center mt-3">
-                    <i class="fa-solid fa-envelope"></i><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                <div class="mb-3 align-items-center mt-3">
+                    <div class="d-flex align-items-center mt-3">
+                        <i class="fa-solid fa-envelope"></i><input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                    </div>
+                    @error('email')
+                        <div class="ms-5 text-danger">{{$message}}</div>
+                    @enderror
                 </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <i class="fa-solid fa-key"></i> <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Mật khẩu">
+                <div class="mb-3 align-items-center">
+                    <div class="d-flex align-items-center mt-3">
+                        <i class="fa-solid fa-key"></i> <input type="password" id="password" class="form-control" id="exampleFormControlInput1" placeholder="Mật khẩu">
+                    </div>
+                    @error('password')
+                        <div class="ms-5 text-danger">{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="mb-3 d-flex ms-3">
-                    <input type="checkbox"> <span class="ms-1">Hiện mật khẩu</span>
+                    <input type="checkbox" id="checkbox" onclick="showPassword()"> <span class="ms-1">Hiện mật khẩu</span>
                     <a href="" class="ms-3 text-danger">Quên mật khẩu</a>
                 </div>
                 <div class="mb-3 d-flex ms-3 " style="justify-content: center">   
@@ -27,5 +37,16 @@
             </form>
         </div>
     </div>    
+    <script>
+        function showPassword() {
+            var password = document.getElementById('password');
+            var checkbox = document.getElementById('checkbox');
 
+            if(checkbox.checked) {
+                password.type = "text";
+            }else{
+                password.type = "password";
+            }
+        }
+    </script>
 @endsection

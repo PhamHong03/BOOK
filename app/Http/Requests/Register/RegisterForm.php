@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Contact;
+namespace App\Http\Requests\Register;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactFormRequest extends FormRequest
+class RegisterForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,9 @@ class ContactFormRequest extends FormRequest
         return [
             'name' =>'required',
             'email' => 'required|email',
-            'problem' => 'required|min:5',
-            'description' => 'required|min:10'
+            'phone' => 'required|min:5',
+            'password' => 'required|min:10',
+            'confirmPassword' => 'required|min:10|same:password'
         ];
     }
 
@@ -33,8 +34,9 @@ class ContactFormRequest extends FormRequest
         return [
             'name.required' => 'Hãy nhập tên của bạn!',
             'email.required' => 'Vui lòng nhập email của bạn!',
-            'problem.required' => 'Vui lòng nêu vấn đề bạn cần giải đáp! VD( Giỏ hàng, đăng ký ...)',
-            'description.required' => 'Hãy mô tả sơ lược về vấn đề bạn gặp!'
+            'phone.required' => 'Vui lòng nhập số điện thoại của bạn!',
+            'password.required' => 'Hãy nhập mật khẩu.',
+            'confirmPassword.required' => 'Chưa chính xác'
         ];
     }
 }

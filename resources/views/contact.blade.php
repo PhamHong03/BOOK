@@ -8,7 +8,7 @@
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15715.726391463735!2d105.77034015000002!3d10.022503510436318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a089bb88b20641%3A0xf542c24683b038a7!2sPhuc%20Long%20coffee%20%26%20Tea!5e0!3m2!1sen!2s!4v1693972580039!5m2!1sen!2s"
                       class="map"
                       width="600"
-                      height="450"
+                      height="490"
                       style="border: 0"
                       allowfullscreen=""
                       loading="lazy"
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <script>
+    {{-- <script>
         document.getElementById("form").addEventListener("submit", function(event) {
             event.preventDefault();
             Swal.fire({
@@ -78,5 +78,5 @@
                 icon: "question"
             });
         });
-    </script>
+    </script> --}}
 @endsection

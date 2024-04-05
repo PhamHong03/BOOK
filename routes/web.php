@@ -145,7 +145,11 @@ Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/d
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 
+Route::post('/register', [UserController::class, 'postRegister']);
+
 Route::get('/login', [UserController::class, 'login'])->name('login');
+
+Route::post('/login', [UserController::class, 'postLogin']);
 
 // Route::get('/forgotPW', [AuthManagerController::class, 'forgotPW'])->name('forgotPW');
 

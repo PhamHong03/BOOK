@@ -141,7 +141,7 @@ Route::post('/update-cart', [CartController::class, 'update']);
 
 Route::get('carts/delete/{id}', [CartController::class, 'remove']);
 
-Route::post('carts/delete', [CartController::class, 'removeAll']);
+Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/delete');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 

@@ -26,7 +26,7 @@ class CartController extends Controller
             return redirect()->back(); 
         }
              
-        sleep(2);
+        sleep(1.5);
         // return redirect('/carts');
         return redirect('products');      
        
@@ -44,8 +44,7 @@ class CartController extends Controller
     public function update(Request $request) {       
         
         $this->cartService->update($request);
-
-        // dd($request->all());
+        // sleep(2);
         return redirect('/carts');
     }
 
@@ -56,8 +55,11 @@ class CartController extends Controller
     }
     
     public function  removeAll(Request $request) {
-        $this->cartService->removeAll($request);
-
+        $result = $this->cartService->removeAll($request);
+        if($result === false){
+            return redirect()->back();
+        }
+        sleep(2);            
         return redirect('/carts');
     }
 

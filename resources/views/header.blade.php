@@ -47,8 +47,8 @@
                 <div class="header__account">
                     <i class="fa-solid fa-user"></i>
                     <div class="header__account--list">
-                        <button class="button button-red"><a href="{{ route('login') }}">Đăng ký</a></button>
-                        <button class="button button-white"><a href="{{ route('register') }}">Đăng nhập</a></button>
+                        <button class="button button-red"><a href="{{ route('register') }}">Đăng ký</a></button>
+                        <button class="button button-white"><a href="{{ route('login') }}">Đăng nhập</a></button>
                         <button class="button button-blue"><i class="fa-brands fa-facebook-f"></i><a href="/">Đăng nhập bằng Facebook</a></button>
                     </div>
                 </div>

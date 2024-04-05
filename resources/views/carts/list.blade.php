@@ -1,6 +1,6 @@
 @extends('head')
 @section('content')
-<form  method="POST" id="form">    
+<form  method="POST" id="form" class="form">    
     @include('admin.alert')    
     @if(count($products) != 0)
         @php
@@ -11,9 +11,10 @@
             <div class="product__cart me-5">               
                 <div class="row">           
                     <div class="product__cart product__cart--group">
-                        <input class=" me-2 btn btn-danger btn-delete" name="delete-all" type="submit" value="Xóa tất cả" formaction="/carts/delete"></input>
+                        <input class=" me-2 btn btn-danger btn-delete" id="delete-all" name="delete-all" 
+                        type="submit" onclick="onDeleteAll()" formaction="/carts/delete" value="Xóa tất cả" ></input>
                         @csrf
-                        <input class="btn btn-success  me-1" type="submit"  value="Cập nhật giỏ hàng" formaction="/update-cart">
+                        <input class="btn btn-success  me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
                     </div>
                 </div> 
                 @foreach ($products as $key => $product )         
@@ -113,7 +114,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn btn-success bmtn-confirm" name="pay-all" name="pay-all" type="submit" >Thanh Toán</button>
+                <button class="btn btn-success bmtn-confirm" id="pay-all" name="pay-all" onclick="payAll()" type="submit" >Thanh Toán</button>
             </div>           
         </div>  
        
@@ -127,18 +128,39 @@
 <script src="/template/js/cart.js"></script>
 
 
-{{-- <script>
-    document.getElementById("form").addEventListener(delete() {
-    //    event.preventDefault(); 
+<script>
+    function onDeleteAll(event) {
+        // event.preventDefault();
         Swal.fire({
-            title: "Bạn có chắc muốn xóa tất cả không?",
-            showDenyButton: true,
+            title: 'Bạn có chắc muốn xóa tất cả?',
+            text: 'Bạn không thể khôi phục giỏ hàng được nữa!',
+            icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: "Xóa",
-            denyButtonText: `Không`
-        });
-    });
-</script> --}}
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes! Delete all',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                Swal.fire({
+                    title: "Xóa tất cả!",
+                    text: "Giỏ hàng của bạn sẽ trống ngay lập tức.",
+                    icon: "success"
+                });
+            }          
+        });        
+    };
+
+    function payAll() {
+        Swal.fire({
+           icon: 'success',
+           text: 'Thanh toán thành công',
+           showConfirmButton: false,
+           timer: 2000
+       });
+    }
+   
+</script>
 
 
 

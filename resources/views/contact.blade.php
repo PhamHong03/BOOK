@@ -22,7 +22,7 @@
                 @endif
                 <h4 class="text-center">Hãy liên hệ với chúng tôi nếu bạn có bất kỳ thất mắc nào!</h4>
                 <div class="contact__form">
-                    <form action="contact" method="POST" class="form">
+                    <form action="contact" method="POST" class="form" id="form">
                         @csrf
                         <div class="mb-3 align-items-center mt-3">
                             <div class="d-flex align-items-center mt-3">                                
@@ -68,4 +68,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: "Câu hỏi của bạn?",
+                text: "Câu hỏi này đã đến nhà quản trị, mong rằng sự phản hồi sớm sẽ giúp ích gì đó cho bạn",
+                icon: "question"
+            });
+        });
+    </script>
 @endsection

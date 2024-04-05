@@ -16,7 +16,7 @@
                     <i class="fa-solid fa-key"></i> <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Mật khẩu">
                 </div>
                 <div class="mb-3 d-flex ms-3">
-                    <input type="checkbox"> <span>Hiện mật khẩu</span>
+                    <input type="checkbox"> <span class="ms-1">Hiện mật khẩu</span>
                     <a href="" class="ms-3 text-danger">Quên mật khẩu</a>
                 </div>
                 <div class="mb-3 d-flex ms-3 " style="justify-content: center">   

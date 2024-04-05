@@ -19,9 +19,6 @@
                 <div class="mb-3 d-flex align-items-center">
                     <i class="fa-solid fa-phone"></i><input type="text" class="form-control" name="phone" placeholder="Số điện thoại">
                 </div>
-                {{-- <div class="mb-3 d-flex align-items-center">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" class="form-control" name="address" placeholder="Địa chỉ">
-                </div> --}}
                 <div class="mb-3 d-flex align-items-center">
                     <i class="fa-solid fa-key"></i> <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                 </div>
@@ -29,7 +26,7 @@
                     <i class="fa-solid fa-key"></i> <input type="password" class="form-control" name="confirmPassword" placeholder= "Nhập lại mật khẩu">
                 </div>
                 <div class="mb-3 d-flex ms-3">
-                    <input type="checkbox"> <span>Hiện mật khẩu</span>
+                    <input type="checkbox"> <span class="ms-1">Hiện mật khẩu</span>
                 </div>
                 <div class="mb-3 d-flex ms-3" style="justify-content: center">   
                     <input class="btn btn-pink" type="submit" value="Đăng ký">

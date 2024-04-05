@@ -21,10 +21,8 @@ class CartService
 
             return false;
         } 
-
         // Session::forget('carts');
-        $carts = Session::get('carts');
-        
+        $carts = Session::get('carts');        
       
         if(is_null($carts)) {
             Session::put('carts', [
@@ -40,12 +38,9 @@ class CartService
             Session::put('carts', $carts);
             
             return true;
-        }
-        
+        }        
         $carts[$product_id] = $qty;
-        Session::put('carts', $carts);
-
-        
+        Session::put('carts', $carts);        
         return true;
     }
 
@@ -72,19 +67,15 @@ class CartService
   
 
     public function  removeAll($request) {
-        $carts = Session::get('carts');
-                
+        $carts = Session::get('carts');                
         unset($carts);
-
         Session::put('carts', $request->input('num-product'));
         return true;        
     }
 
     public function  remove($id) {
         $carts = Session::get('carts');
-        // dd($carts);
         unset($carts[$id]);
-
         Session::put('carts', $carts);
         return true;        
     }
@@ -116,9 +107,6 @@ class CartService
 
             #Queue
             SendMail::dispatch($request->input('email'))->delay(now()->addSecond(2));
-
-
-
 
             Session::forget('carts');
         }catch(\Exception $err) {

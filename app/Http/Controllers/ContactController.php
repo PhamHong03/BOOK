@@ -14,7 +14,6 @@ class ContactController extends Controller
     } 
 
     public function store(ContactFormRequest $request) {
-
         return back()->with('message', 'Form submitted successfully ');
     }
 }

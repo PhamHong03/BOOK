@@ -45,8 +45,15 @@
                     </a>
                 </div>
                 <div class="header__account">
-                    <i class="fa-solid fa-user"></i>
+                    @if (Auth::check())
+                        <i class="me-2 fa-solid fa-user"></i> {{ Auth::user()->name }}
+                    @else
+                        <i class="me-2 fa-solid fa-user"></i>
+                    @endif
+                        
+                    
                     <div class="header__account--list">
+                        <button class="button button-red"><a href="{{ route('logout') }}">Đăng xuất</a></button>
                         <button class="button button-red"><a href="{{ route('register') }}">Đăng ký</a></button>
                         <button class="button button-white"><a href="{{ route('login') }}">Đăng nhập</a></button>
                         <button class="button button-blue"><i class="fa-brands fa-facebook-f"></i><a href="/">Đăng nhập bằng Facebook</a></button>

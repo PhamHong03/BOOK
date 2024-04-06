@@ -76,7 +76,6 @@ Route::middleware(['auth'])->group(function() {
 
         });
 
-
         #Slider
         Route::prefix('sliders')->group(function() {
             
@@ -107,27 +106,25 @@ Route::middleware(['auth'])->group(function() {
         Route::prefix('importGoods')->group(function () {
             Route::get('add', [ImportController::class, 'index']);
         });
-    });
-    
+    });    
    
 });
 
 Route::get('test-email', [MainController::class,'testEmail']);
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [MainController::class, 'index'])->name('bookstore');
 
 Route::get('/products', [MainController::class, 'products'])->name('products');
 
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+
 Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
 Route::post('/services/load-product', [MainController::class, 'loadProduct']);
 
-
 Route::get('danh-muc/{id}-{slug}.html',[MenuControllers::class, 'index']);
 
 Route::get('san-pham/{id}.html', [ProductControllers ::class, 'index'])->name('san-pham');
-
 
 Route::get('tim-kiem', [MainController::class, 'getSearch'])->name('search');
 
@@ -150,6 +147,8 @@ Route::post('/register', [UserController::class, 'postRegister']);
 Route::get('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/login', [UserController::class, 'postLogin']);
+
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
 // Route::get('/forgotPW', [AuthManagerController::class, 'forgotPW'])->name('forgotPW');
 

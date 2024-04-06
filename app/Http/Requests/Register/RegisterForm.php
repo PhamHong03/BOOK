@@ -24,8 +24,7 @@ class RegisterForm extends FormRequest
         return [
             'name' =>'required',
             'email' => 'required|email',
-            'phone' => 'required|min:5',
-            'password' => 'required|min:10',
+            'password' => 'required|min:5',
             'confirmPassword' => 'required|min:10|same:password'
         ];
     }
@@ -34,7 +33,6 @@ class RegisterForm extends FormRequest
         return [
             'name.required' => 'Hãy nhập tên của bạn!',
             'email.required' => 'Vui lòng nhập email của bạn!',
-            'phone.required' => 'Vui lòng nhập số điện thoại của bạn!',
             'password.required' => 'Hãy nhập mật khẩu.',
             'confirmPassword.required' => 'Chưa chính xác'
         ];

@@ -115,6 +115,7 @@ Route::middleware(['admin'])->group(function() {
         #cart
         Route::get('customers', [AdminCartController::class,'index']);
         Route::get('customers/view/{customer}', [AdminCartController::class, 'show']);
+        Route::post('delivery', [AdminCartController::class, 'delivery'])->name('delivery');
     });    
    
 });

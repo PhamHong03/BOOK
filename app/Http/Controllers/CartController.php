@@ -59,7 +59,7 @@ class CartController extends Controller
         if($result === false){
             return redirect()->back();
         }
-        sleep(2);            
+        sleep(1);            
         return redirect('/carts');
     }
 

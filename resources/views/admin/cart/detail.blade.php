@@ -2,6 +2,7 @@
 
 
 @section('content')
+<form action="" method="" id="form">
     <div class="customer mt-2">
         <ul>
             <li>Tên khách hàng : <strong>{{ $customers->name }}</strong></li>
@@ -16,15 +17,15 @@
         $total_ship = 0;
     @endphp 
     <div class="cart__admin">
-        <div class="product__cart--admin">
-            <table class="table">
+        <div class="product__cart--admin ">
+            <table class="table cart__admin-table">
                 <tbody>
-                  <tr>
-                    <th class="column-1">Sản phẩm</th>
-                    <th class="column-2"></th>
-                    <th class="column-3">Giá</th>
-                    <th class="column-4">Số lượng</th>
-                    <th class="column-5">total</th>
+                  <tr >
+                    <th class="column-1 table_admin">HÌNH ẢNH</th>
+                    <th class="column-2 table_admin">TÊN SẢN PHẨM</th>
+                    <th class="column-3 table_admin">GIÁ SẢN PHẨM</th>
+                    <th class="column-4 table_admin">SL</th>
+                    <th class="column-5 table_admin">TỔNG GIÁ</th>
                   </tr>              
                 
                     @foreach ($carts as $key => $cart )         
@@ -37,34 +38,40 @@
                             $total_ship = $total + $ship;                        
                         @endphp          
                         
-                        <tr class="table_row">
-                            <td class="column-1">
+                        <tr class="table_row ">
+                            <td class="column-1 table_admin ">
                                 <div class="how_itemcart1">
-                                    <img src="" alt="IMG">
+                                    <img src="{{ $cart->product->thumnb }}" alt="IMG" style="width: 70px">
                                 </div>
                             </td>
-                            <td class="column-2"></td>
-                            <td class="column-3">{{ number_format($cart->price)}}đ</td>
-                            <td class="column-4">{{ $cart->qty }}</td>
-                            <td class="column-3">{{ number_format($price) }}</td>
+                            <td class="column-2 table_admin">{{ $cart->product->name }}</td>
+                            <td class="column-3 table_admin">{{ number_format($cart->price)}}đ</td>
+                            <td class="column-4 table_admin">{{ $cart->qty }}</td>
+                            <td class="column-3 table_admin">{{ number_format($price) }}đ</td>
                         </tr>                                    
                     @endforeach
+                    <tr style="font-size: 1.4rem">
+                        <td colspan="4" class="text-red text-right"><strong>Tổng thanh toán:</strong> </td>
+                        <td style="width:100px"><strong>{{ number_format($total) }}đ</strong></td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>
+        <button class=" btn btn-success" style="float: right" onclick="duyetdon()">Vận chuyển</button>
+
     </div>
-@endsection
-             
-                    {{-- <div class="product__cart--admin-body">
-                        <div class="product__cart--admin-item product__cart--admin-item-img">
-                            <img src="" alt="">
-                        </div>
-                        <div class="product__cart--admin-item product__cart--admin-item-con">
-                            <div class="product__cart--admin-item-cont"><h5>ten</h5></div>                
-                            <div class="product__cart--admin-item-cont"><span>{{ number_format($cart->price) }}đ</span></div>
-                            <div class="product__cart--admin-item-cont"><span>{{ $cart->qty }}</span></div>
-                            <div class="product__cart--admin-item-cont"><span>{{ number_format($price) }}đ</span></div>
-                            
-                        </div>                    
-                    </div>   --}}
-                    
+    @csrf
+</form>
+@endsection              
+           
+<script>
+    // function duyetdon() {
+    //     Swal.fire({
+    //        icon: 'success',
+    //        text: 'Thêm vào vận chuyển',
+    //        showConfirmButton: false,
+    //        timer: 2000
+    //    });
+    // }
+</script>

@@ -1,9 +1,16 @@
+li{
+    list-style-type: none;
 
+}
 /* Cart admin */
 .cart__admin{
-    display: flex;
+    margin-left: 20px;    
+    margin-right: 20px;
+    border-top: 2px solid green;
 }
-
+.table_admin{
+    border: 2px solid green;
+}
 
 /* Cart customer */
 .cart{

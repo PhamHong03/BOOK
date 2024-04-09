@@ -12,7 +12,7 @@
                 <div class="row">           
                     <div class="product__cart product__cart--group">
                         <input class=" me-2 btn btn-danger btn-delete" id="delete-all" name="delete-all" 
-                        type="submit" onclick="onDeleteAll()" formaction="/carts/delete" value="Xóa tất cả"></input>
+                        onclick="onDeleteAll(event)" value="Xóa tất cả"></input>
                         @csrf
                         <input class="btn btn-success btn-update me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
                     </div>
@@ -51,7 +51,6 @@
                                 </div>
                             </div>                    
                             <div class="product__cart--item product__cart--item-btn">
-                                {{-- <button class="btn btn-success btn-confirm" ><a href="/carts/update/{{ $product->id }}" style="color: white" >Xác nhận</a></button> --}}
                                 <button class="btn btn-danger btn-delete"><a href="/carts/delete/{{ $product->id }}" style="color: white">Xóa</a></button>
                             </div>
                             <input type="hidden" class="product_id" name="product_id" value="{{ $product->id }}">
@@ -96,14 +95,7 @@
                             </li>
                             <li class="product__left--item d-flex">
                                 <span class="uct__left--item">Phí vận chuyển: </span>
-                                <div class="product__left--item-checkbox me-5">{{ number_format($ship) }}đ
-                                    {{-- <div class="">
-                                        <input type="radio" name="business" value="freeship" >
-                                        <label for="ship">{{ $ship }}</label>
-                                    </div> --}}
-                                    {{-- <div class="">
-                                        <button class="btn btn-light">Mã giảm giá</button>
-                                    </div> --}}
+                                <div class="product__left--item-checkbox me-5">{{ number_format($ship) }}đ                
                                 </div>
                             </li>
                             <li class="product__left--item">
@@ -130,8 +122,8 @@
 <script>
     
     function onDeleteAll(event) {
-        const inputDel = document.querySelector('.btn-delete');
-        
+        event.preventDefault()
+        const form = document.querySelector('.form');
         Swal.fire({
             title: 'Bạn có chắc muốn xóa tất cả?',
             text: 'Bạn không thể khôi phục giỏ hàng được nữa!',
@@ -142,7 +134,8 @@
             confirmButtonText: 'Yes! Delete all',
         }).then((result) => {
             if (result.isConfirmed) {
-                
+                form.setAttribute('action', '/carts/delete');
+                form.submit();
                 Swal.fire({
                     title: "Xóa tất cả!",
                     text: "Giỏ hàng của bạn sẽ trống ngay lập tức.",

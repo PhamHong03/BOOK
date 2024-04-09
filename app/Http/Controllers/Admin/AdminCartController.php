@@ -27,7 +27,7 @@ class AdminCartController extends Controller
         return view('admin.cart.detail', [
             'title' => 'Chi Tiết Đơn Hàng : ' .$customer->name,
             'customers' => $customer,
-            'carts' => $customer->carts()->get()           
+            'carts' => $customer->carts()->with('product')->get()           
         ]);
     }
 

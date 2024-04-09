@@ -1,20 +1,20 @@
 @extends('head')
 @section('content')
-<form  method="POST" id="form" class="form">    
+<form method="POST" id="form" class="form">    
     @include('admin.alert')    
     @if(count($products) != 0)
         @php
             $total = 0;
             $total_ship = 0;
         @endphp 
-        <div class="container cart">    
-            <div class="product__cart me-5">               
+        <div class="container cart ">    
+            <div class="product__cart  me-5">               
                 <div class="row">           
                     <div class="product__cart product__cart--group">
                         <input class=" me-2 btn btn-danger btn-delete" id="delete-all" name="delete-all" 
-                        type="submit" onclick="onDeleteAll()" formaction="/carts/delete" value="Xóa tất cả" ></input>
+                        type="submit" onclick="onDeleteAll()" formaction="/carts/delete" value="Xóa tất cả"></input>
                         @csrf
-                        <input class="btn btn-success  me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
+                        <input class="btn btn-success btn-update me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
                     </div>
                 </div> 
                 @foreach ($products as $key => $product )         
@@ -25,8 +25,7 @@
                         $total += $priceEnd;
                         $ship = floatval(42000);
 
-                        $total_ship = $total + $ship;
-                        
+                        $total_ship = $total + $ship;                        
                     @endphp
                     <div class="row">                        
                         <div class="product__cart product__cart--body ">
@@ -60,7 +59,7 @@
                     </div>
                 @endforeach
             </div>  
-            <div class="product__left">
+            <div class="product__left ">
                 <div class="product__left--title">
                     <h3 >Tổng sản phẩm</h3>
                     <div class="product__cart--head"></div>
@@ -129,8 +128,10 @@
 
 
 <script>
+    
     function onDeleteAll(event) {
-        // event.preventDefault();
+        const inputDel = document.querySelector('.btn-delete');
+        
         Swal.fire({
             title: 'Bạn có chắc muốn xóa tất cả?',
             text: 'Bạn không thể khôi phục giỏ hàng được nữa!',

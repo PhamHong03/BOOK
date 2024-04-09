@@ -1,6 +1,8 @@
 
 <footer>
-    
+    <div class="container">
+        <hr>
+       </div>
     <div class="container">
         <div class="footer">
             <div class="footer__left">
@@ -36,7 +38,7 @@
             </div>
             <div class="footer__right">
                 <div class="row">
-                    <div class="col-sm-4 col-12">
+                    <div class="col-lg-4 col-12">
                         <ul class="footer__right--list">
                             <li class="footer__right--item"><h5>DỊCH VỤ</h5></li>
                             <li class="footer__right--item"><a href="/"><p>Điều khoản sử dụng</p></a> </li>
@@ -45,7 +47,7 @@
                             <li class="footer__right--item"><a href="/"><p>Hệ thống trung tâm - nhà sách</p></a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4 col-12">
+                    <div class="col-lg-4 col-12">
                         <ul class="footer__right--list">
                             <li class="footer__right--item"><h5>HỖ TRỢ</h5></li>
                             <li class="footer__right--item"><a href="/"><p>Chính sách đổi - trả - hoàn tiền</p> </a></li>
@@ -54,7 +56,7 @@
                             <li class="footer__right--item"><a href="/"><p>Chính sách khách sỉ</p></a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4 col-12">
+                    <div class="col-lg-4 col-12">
                         <ul class="footer__right--list">
                             <li class="footer__right--item"><h5>TÀI KHOẢN CỦA TÔI</h5></li>
                             <li class="footer__right--item"><a href="/"><p>Đăng nhập/Tạo mới tài khoản</p> </a></li>

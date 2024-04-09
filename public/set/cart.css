@@ -1,12 +1,21 @@
+
+/* Cart admin */
+.cart__admin{
+    display: flex;
+}
+
+
+/* Cart customer */
 .cart{
     display: flex;
-    /* flex-wrap: wrap; */
 }
 @media screen and (max-width: 1200px) {
     .cart{
         flex-wrap: wrap;
     }
   }
+
+  
 .product__cart{
     margin-top: 20px;
     flex: 60%;
@@ -127,10 +136,23 @@
     min-width: 15px;
     height: 15px;
     padding: 0 3px;
-    background-color: #3f9456;
+    background-color: palevioletred;
     border-radius: 50%;
   }
 
   .bmtn-confirm {
     width: 92%;
   }
+  .bmtn-confirm, .btn-delete, .btn-update{
+    transition: scale 0.2 ease;
+  }
+  .bmtn-confirm:active, .btn-delete:active, .btn-update:active{
+    scale: 0.95;
+  }
+
+  .bmtn-confirm:hover, .btn-delete:hover, .btn-update:hover{
+    scale: 1.05;
+  }
+
+
+

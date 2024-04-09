@@ -1,6 +1,7 @@
 @extends('head')
 
 @section('content')
+
     <div class="container">
         <div class="bread-crumb p-3 ">
             <a href="/">Trang chủ
@@ -15,13 +16,13 @@
             </a>
         </div> 
     </div>
-    <div class="container">        
+    <div class="container flex-wrap">        
        <div class="row">
             <div class="content">            
-                <div class="content__left">
+                <div class="content__left ">
                     <img src="{{ $product->thumnb }}" alt="" class="product-img p-t-20 p-b-20">                                   
                 </div>            
-                <div class="content__right">
+                <div class="content__right ">
                     <h3 class="mt-2"><i>Danh mục: {{ $product->menu->name }}</i></h3>
                     <h2 class="mt-2">Tác phẩm: {{ $product->name }}</h2>
                     <p class="mt-3">Tác giả: {{ $product->author }}</p>
@@ -53,9 +54,9 @@
                             </div> 
                         </div>
                         <div class="button-cart d-flex mt-3">
-                            <button type="submit" class="p-2 btn-success btn-success-add-cart" id="btn-add-cart" style="width: 50%"><i class="me-2 fa-solid fa-cart-plus"></i>Thêm vào giỏ hàng</button>
-                            {{-- <i class="me-2 fa-solid fa-cart-shopping"></i>  --}}
-                            <input class="p-2 btn-danger ms-2 text-center" style="width: 30%" value="Mua ngay" >
+                            <button type="submit" class="p-2 btn-success btn-success-add-cart" id="btn-add-cart" ><i class="me-2 fa-solid fa-cart-plus"></i>Thêm vào giỏ hàng</button>
+                           
+                            <input class="p-2 btn-danger ms-2 text-center btn-danger-buy-now" value="Mua ngay" >
                         </div>                        
                         <input type="hidden" class="product_id" name="product_id" value="{{ $product->id }}">
                         @csrf
@@ -63,7 +64,7 @@
                 </div>
             </div>
        </div>
-       <div class="row">
+       <div class="row desc">
             <div class="description--title">
                 <h4 class="text-center">Description</h4>
             </div>
@@ -75,7 +76,7 @@
     </div>
    <section>
     <div class="container">
-        <h3 class="text-center mt-4">Sản phẩm liên quan</h3>
+        <h3 class="text-center mt-2">Sản phẩm liên quan</h3>
         @include('products.list')
     </div>
    </section>

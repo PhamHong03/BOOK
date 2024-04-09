@@ -80,7 +80,6 @@
   </footer>
 
 </div>
-<!-- ./wrapper -->
 
     @include('admin.footer')
 

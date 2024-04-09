@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCartController;
 use App\Http\Controllers\Admin\ImportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Users\LoginController;
@@ -32,14 +33,18 @@ Route::get('/', [HomeController::class, 'index'])->name('client.index');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('admin/users/login',[LoginController::class,'index'])->name('login');
+Route::get('admin/users/login',[LoginController::class,'index'])->name('admin-login');
 Route::post('admin/users/login/store',[LoginController::class,'store']);
 
-Route::middleware(['auth'])->group(function() {
+Route::get('/sign-out', [LoginController::class, 'sign_out'])->name('sign-out');
+
+
+
+Route::middleware(['admin'])->group(function() {
 
     Route::prefix('admin')->group(function() {
 
-        Route::get('/',[MainController::class,'index'])->name('admin');
+        Route::get('/',[MainController::class,'index1'])->name('admin');
 
         Route::get('main',[MainController::class,'index']);   
     
@@ -106,6 +111,10 @@ Route::middleware(['auth'])->group(function() {
         Route::prefix('importGoods')->group(function () {
             Route::get('add', [ImportController::class, 'index']);
         });
+
+        #cart
+        Route::get('customers', [AdminCartController::class,'index']);
+        Route::get('customers/view/{customer}', [AdminCartController::class, 'show']);
     });    
    
 });

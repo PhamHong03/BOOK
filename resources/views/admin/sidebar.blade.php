@@ -8,19 +8,26 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">       
         <div class="image">
-          <img src="/template/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Administrator</a>
+          <img src="/template/admin/dist/img/hong.jpg" class="img-circle elevation-2 " alt="User Image">
+        </div>        
+        <div class="info d-flex">
+          @if (Auth::check())
+              <a href="#" class="d-block">{{ Auth::user()->name }}</a>    
+              <a href="{{ route('sign-out') }}" class="d-block " style="margin-left: 10px">Đăng xuất</a>
+          @else
+        
+          @endif
+          
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Tìm kiếm" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -107,22 +114,20 @@
               </li>
             </ul>
           </li>
-
-
-
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa-regular fa-images"></i>
-              <p>
-                Tác Giả  
+              <i class="fa-solid fa-cart-plus"></i>
+              <p style="margin-left: 7px">
+                Giỏ Hàng
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/admin/customers" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách tác giả </p>
+                  <p>Danh sách đơn hàng </p>
                 </a>
               </li>
             </ul>

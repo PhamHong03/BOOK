@@ -31,6 +31,13 @@ class MainController extends Controller
             'menus' => $this->menu->show()
         ]);
     }
+    public function index1() {
+        return view('admin.main', [
+            'title' => 'BOOKSTORE',
+            'slider' => $this->slider->show(),
+            'menus' => $this->menu->show()
+        ]);
+    }
 
     public function loadProduct(Request $request) {
 

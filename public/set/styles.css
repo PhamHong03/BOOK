@@ -118,39 +118,6 @@
 }
 
 
-.nav__search {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.input-group {
-    width: 50%;
-    height: 41px;
-  }
-  .input-group input {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.15);
-    border-radius: 6px !important;
-  }
-  .input-group input::placeholder {
-    font-style: italic;
-  }
-  .input-group input:focus {
-    border-color: var(--dark-gray);
-    /* box-shadow: 0 0 0 0.2rem var(--light-gray); */
-  }
-  .input-group-append {
-    position: absolute;
-    right: 1.5px;
-    top: 1.5px;
-  }
-  .input-group .btn {
-    background: linear-gradient(to right,#FFC1C2, #FEDEE0);
-    z-index: 999 !important;
-    color: var(--black);
-  }
 /* home */
 
 .main__content--list {
@@ -236,16 +203,42 @@
 
 .content{
     display: flex;
-    /* box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05); */
     background-color: var(--white );
     font-size: 1.1em;
+}
+@media screen and (max-width: 1200px) {
+    
+    .content__left{
+        width: 50%;
+        height: 80%;
+    }
+    .contact__right{
+        flex: 100%;
+        
+    }
     
 }
+@media screen and (max-width: 725px) {
+    
+    .content__left{
+        display: none;        
+    }
+    .content__right{
+        flex: 100%;
+        /* text-align: center; */
+    }  
+    .btn-success-add-cart{
+        width: 50%;
+    }
+    .button-cart input {
+        width: 50%;
+    }
 
+}
 .content__left{
     flex: 50%;
     width: 80%;
-    height: 90%;
+    height: 100%;
 }
 .product-img{
     width: 90%;
@@ -268,7 +261,7 @@
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
     background-color: var(--white );
     position: relative;
-    left: 20px;
+    /* left: 20px; */
     padding: 20px;
     margin: auto;
     width: 80%;
@@ -278,7 +271,15 @@
     padding: 10px;
 
 }
-
+.btn-success-add-cart{
+    width: 50%;
+}
+.btn-success-add-cart:hover{
+    scale: 1.02;
+}
+.btn-danger-buy-now{
+    width: 30%;
+}
 .btn-quantity {
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0;
@@ -317,19 +318,13 @@
 
 
 
-
-
-
-
-
-
-
 /* Contact */
 
 .contact{
     margin-top: 50px;
     display: flex;
 }
+
 
 .contact__left{
     flex: 50%;

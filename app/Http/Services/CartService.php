@@ -143,6 +143,10 @@ class CartService
 
         return Cart::insert($data);
     }
+
+    public function getCustomer() {
+        return Customer::orderByDesc('id')->paginate(8);
+    }
 }
 
 

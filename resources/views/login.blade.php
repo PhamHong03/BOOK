@@ -10,7 +10,7 @@
         </div>     
         <div class="register__form">
             <form action="" method="POST" class="form">
-                @include('admin.alert');
+                @include('admin.alert')
                 @csrf
                 <div class="mb-3 align-items-center mt-3">
                     <div class="d-flex align-items-center mt-3">

@@ -25,7 +25,8 @@ class LoginController extends Controller
 
         if(Auth::attempt([
                 'email' => $request->input('email'),
-                'password' => $request->input('password')
+                'password' => $request->input('password'),
+                'role' =>  1
                 // 'level' => 1
             ], $request->input('remember'))){
              return redirect()->route('admin');
@@ -33,5 +34,10 @@ class LoginController extends Controller
         Session::flash('error', 'Email và Password không đúng ');
         return redirect()->back();
         
+    }
+
+    public function sign_out() {
+        Auth::logout();
+        return redirect()->route('admin-login');
     }
 }

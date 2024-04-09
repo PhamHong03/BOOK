@@ -15,7 +15,7 @@
                     mà còn là một không gian tương tác và thú vị cho những người đam mê sách.</span>
 
                 <div class="button">
-                    <button type="button" class="btn btn-pink btn-outline-secondary"><a href="{{ 'products' }}">Khám phá ngay</a></button>
+                    <button type="button" class="me-1 btn btn-pink btn-outline-secondary"><a href="{{ 'products' }}">Khám phá ngay</a></button>
                     <button type="button" class="btn btn-pink btn-outline-secondary"><a href="{{ route('register') }}">Đăng ký ngay</a></button>
                 </div>
             </div>
@@ -55,7 +55,5 @@
 
     </div>
    </div>
-   <div class="container">
-    <hr>
-   </div>
+   
 @endsection

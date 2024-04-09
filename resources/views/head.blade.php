@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('set/styles.css')}}">
     <link rel="stylesheet" href="{{asset('set/register_login.css')}}">
     <link rel="stylesheet" href="{{asset('set/cart.css')}}">
+    <link rel="stylesheet" href="{{asset('set/header.css')}}">
     <link rel="stylesheet" href="{{asset('template/js/cart.js')}}">
     
 </head>

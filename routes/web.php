@@ -115,7 +115,8 @@ Route::middleware(['admin'])->group(function() {
         #cart
         Route::get('customers', [AdminCartController::class,'index']);
         Route::get('customers/view/{customer}', [AdminCartController::class, 'show']);
-        Route::post('delivery', [AdminCartController::class, 'delivery'])->name('delivery');
+        Route::post('customers/view/{customer}', [AdminCartController::class, 'show']);
+        Route::post('customers/view/delivery', [AdminCartController::class, 'delivery'])->name('delivery');
     });    
    
 });
@@ -141,8 +142,8 @@ Route::get('tim-kiem', [MainController::class, 'getSearch'])->name('search');
 Route::get('carts', [CartController::class, 'show'])->name('carts');
 
 Route::post('carts', [CartController::class, 'addCart']);
-
-Route::post('add-cart', [CartController::class, 'index']);
+Route::middleware('checkLogin')->post('add-cart',[CartController::class, 'index']);
+// Route::post('add-cart', [CartController::class, 'index']);
 
 Route::post('/update-cart', [CartController::class, 'update']);
 

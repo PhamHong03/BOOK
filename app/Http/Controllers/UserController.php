@@ -8,6 +8,8 @@ use App\Http\Requests\Register\RegisterForm;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Services\CartService;
+use Illuminate\Contracts\Session\Session;
 
 class UserController extends Controller
 {

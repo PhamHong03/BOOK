@@ -3,19 +3,7 @@
 
 @section('content')
 <form method="POST" id="form" class="form">
-    <div class="customer mt-2">
-        <ul>
-            <li>Tên khách hàng : <strong>{{ $customers->name }}</strong></li>
-            <li>Số điện thoại : <strong>{{ $customers->phone }}</strong></li>
-            <li>Địa chỉ : <strong>{{ $customers->address }}</strong></li>
-            <li>Email : <strong>{{ $customers->email }}</strong></li>
-            <li>Ghi chú : <strong>{{ $customers->content }}</strong></li>
-        </ul>
-    </div>
-    @php
-        $total = 0;
-        $total_ship = 0;
-    @endphp 
+    
     <div class="cart__admin">
         <div class="product__cart--admin ">
             <table class="table cart__admin-table">
@@ -64,47 +52,4 @@
     @csrf
 </form>
 @endsection              
-           
-<script>
-    function duyetdon(event) {
-        console.log("Helllo peter");
-        event.preventDefault()
-        const form = document.querySelector('.form');
-        const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-        });
-        swalWithBootstrapButtons.fire({
-            title: "Bạn muốn vận chuyển không?",
-            text: "Khách hàng có lẽ đang cần bạn!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Xác nhận đơn!",
-            cancelButtonText: "Không!",
-            reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.setAttribute('action', 'customers/view/delivery');
-                    form.submit();
-                    swalWithBootstrapButtons.fire({
-                    title: "Xác nhận thành công!",
-                    text: "Đơn hàng sẽ được vận chuyển",
-                    icon: "success"
-                    });
-                } else if (
-                    /* Read more about handling dismissals below */
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire({
-                    title: "Không thành công",
-                    text: "Đơn hàng bất động",
-                    icon: "error"
-                    });
-                }
-            });
-        };
-
-</script>
+      

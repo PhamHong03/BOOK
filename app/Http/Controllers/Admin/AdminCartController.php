@@ -21,13 +21,21 @@ class AdminCartController extends Controller
             'customers' => $this->cart->getCustomer()
         ]);
     }
+    public function delivery() {
+    
+        // return view('admin.cart.delivery', [
+        //     'title' => 'Danh Sách Vận Chuyển'
+        //     // 'customers' => $this->cart->getCustomer()
+        // ]);
+    }
     
     public function show(Customer $customer) {
-        // dd($customer->carts()->get()  );
+       $carts = $this->cart->getProductForCart($customer);
+
         return view('admin.cart.detail', [
             'title' => 'Chi Tiết Đơn Hàng : ' .$customer->name,
             'customers' => $customer,
-            'carts' => $customer->carts()->with('product')->get()           
+            'carts' => $carts          
         ]);
     }
 

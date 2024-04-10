@@ -293,7 +293,7 @@ hr{
     color: var(--gray);
 }
 /* Responsive  */
-@media screen and (max-width: 997px) {
+@media screen and (max-width: 1224px) {
     .header{
         margin: 10px 0;
     }

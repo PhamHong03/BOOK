@@ -147,6 +147,13 @@ class CartService
     public function getCustomer() {
         return Customer::orderByDesc('id')->paginate(8);
     }
+
+    
+    public function getProductForCart($customer) {
+        return $customer->carts()->with(['product' => function($query) {
+            $query->select('id', 'name', 'thumnb');
+        }])->get() ;
+    }
 }
 
 

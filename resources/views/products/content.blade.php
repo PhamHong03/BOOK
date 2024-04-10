@@ -86,12 +86,15 @@
 <script>
     document.getElementById("add-to-cart").addEventListener("submit", function(event) {
     //    event.preventDefault(); 
-       Swal.fire({
+    if({{ Auth::check() }}){
+        Swal.fire({
            icon: 'success',
            text: 'Thêm giỏ hàng thành công',
            showConfirmButton: false,
            timer: 2000
        });
+    }
+       
     });
 </script>
 

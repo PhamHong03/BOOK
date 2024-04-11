@@ -141,8 +141,10 @@ Route::get('tim-kiem', [MainController::class, 'getSearch'])->name('search');
 
 Route::get('carts', [CartController::class, 'show'])->name('carts');
 
-Route::post('carts', [CartController::class, 'addCart']);
 Route::middleware('checkLogin')->post('add-cart',[CartController::class, 'index']);
+
+Route::post('carts', [CartController::class, 'addCart']);
+
 // Route::post('add-cart', [CartController::class, 'index']);
 
 Route::post('/update-cart', [CartController::class, 'update']);
@@ -150,6 +152,10 @@ Route::post('/update-cart', [CartController::class, 'update']);
 Route::get('carts/delete/{id}', [CartController::class, 'remove']);
 
 Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/delete');
+
+// Route::get('carts/order', [CartController::class, 'detailOrder'])->name('carts/detail');
+// Route::post('carts/order', [CartController::class, 'addCart']);
+
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 

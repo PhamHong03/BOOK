@@ -63,11 +63,20 @@ class CartController extends Controller
         return redirect('/carts');
     }
 
+    
+    // public function addOrder(Request $request){
+    //     dd($request);
+    // }
+    // public function detailOrder() {
+    //     return view('carts.order', [
+    //         'title' => 'CHI TIẾT ĐẶT HÀNG'
+    //     ]);
+    // }
+    
     public function  addCart(Request $request)  {
         
         $this->cartService->addCart($request);
 
         return redirect()->back();
     }
-    
 }

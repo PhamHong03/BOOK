@@ -209,7 +209,7 @@ header , .header{
 hr{
     font-size: 10px;
     border-radius: 5px;
-    margin: 20px 30px 0 30px;
+    margin: 20px  0 ;
     border: 2px solid palevioletred;    
 }
 

@@ -1,8 +1,109 @@
+
+:root {
+    --white: #fff;
+    --light-gray: #ddd;
+    --logo-color: #f4f4f8;
+    --light-white: #f2e0e0;
+    --background-color: #f8fcf9;
+    --red-dark:rgba(255, 0, 0, 0.87);
+    --gray: #9a9a9a;
+    --black: #000000;
+    --dark-gray: #2d2d2d;   
+    --dark-gray-red: rgba(115, 114, 114, 0.12);
+    --green: #5cb874;
+    --green2: #38a62e;
+    --green3: #0b3d06;
+    --dark-green: rgb(12, 32, 12);
+    --background-green: rgba(68, 150, 91, 0.299);
+    --yellow: #ffc107;
+    --orange: orange;
+    --light-yellow: #ffeb8d;
+    --blue: blue;
+    --light-blue:rgb(76, 130, 211);
+    --background-blue: rgba(7, 58, 109, 0.265);
+    --background-blue2:rgba(4, 35, 65, 0.861);
+    --purple:purple;
+    --header--background:#94846B;
+  }
+
+
 li{
     list-style-type: none;
 
 }
-/* Cart admin */
+input[type="radio"] {
+    accent-color: palevioletred; 
+  }
+.detailOrder__cart--description{
+    display: flex;
+    flex-direction: column;
+}
+.detailOrder__title-1{
+    color: palevioletred;
+    margin-top: 70px;
+}   
+.detailOrder__title{
+    
+    color: palevioletred;
+}
+.detailOrder__info {
+    width: 100%;
+}
+.detailOrder__info ul{
+    padding: 0;
+}
+.detailOrder__info--item input, .detailOrder__info--item select, .detailOrder__info--item textarea{
+    width: 100%;
+    margin-bottom: 7px;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
+
+.detailOrder{
+    background-color: var(--background-color);
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
+}
+.a{
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding: 7px;
+    background-color: var(--white);
+}
+.a .freeship{
+    cursor: pointer;
+}
+.detailOrder__cart{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
+    margin:0px 10px 10px;
+}
+.total__price{
+    box-shadow: 0 0 2px 2px palevioletred;
+    padding: 20px;
+    /* margin: 0px 10px 10px 10px; */
+    margin-top: 10px;
+
+}
+ .total__price--sum, .total__price--ship{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #999;
+}
+.total__price-finaly{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.total__price-finaly a{
+    color: palevioletred;
+    text-decoration: underline;
+}
+/* Car{t admin */
 .cart__admin{
     margin-left: 20px;    
     margin-right: 20px;
@@ -55,6 +156,9 @@ li{
 .product__left--item-list span{
     font-size: 1.2rem;
     
+}
+.product__cart--group{
+    padding: 0;
 }
 .product__cart--head{
     border: 1px solid #222;

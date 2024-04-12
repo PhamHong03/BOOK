@@ -58,7 +58,12 @@ input[type="radio"] {
     border: 1px solid #999;
     border-radius: 3px;
 }
-
+.detailOrder__info--item--map{
+    padding: 7px 0;
+}
+.map{
+    padding:  0px 10px;
+}
 .detailOrder{
     background-color: var(--background-color);
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);

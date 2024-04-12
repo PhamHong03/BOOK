@@ -82,7 +82,8 @@ class CartService
 
 
     public function addCart($request) {
-
+        $address = $request->input('description') .', '.$request->input('ward')  . ', '. $request->input('district') . ', '.$request->input('city');
+        
         try{
             DB::beginTransaction();
             $carts = Session::get('carts');
@@ -90,11 +91,11 @@ class CartService
             if(is_null($carts)) {
                 return false;
             }
-
+            
             $customer = Customer::create([
                 'name' => $request->input('name') ,
                 'phone' => $request->input('phone'),
-                'address' => $request->input('address'),
+                'address' => $address,
                 'email' => $request->input('email'),
                 'content' => $request->input('content')
             ]);

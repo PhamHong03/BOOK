@@ -4,14 +4,14 @@
 <form  method="POST" id="form" class="form">     
     <div class="container">
         <div class="row">
+            @if(count($products) != 0)
             @include('admin.alert')    
             <div class="col-lg-8 col-12">
-                @if(count($products) != 0)
+                
                 @php
                     $freeShip = 0;
                     $total = 0;
-                    $total_ship = 0;
-                    
+                    $total_ship = 0;                    
                 @endphp 
                 <div class="container cart ">    
                     <div class="product__cart  me-5">               
@@ -66,55 +66,6 @@
                             </div>
                         @endforeach
                     </div>  
-                    {{-- <div class="product__left ">
-                        <div class="product__left--title">
-                            <h3 >Tổng sản phẩm</h3>
-                            <div class="product__cart--head"></div>
-                            <div class="product__left--list">
-                                <ul class="product__left--item-list mt-3 me-5">
-                                    <li class="product__left--item">
-                                        <input class="p-2" type="radio" value="doanhnghiep" name="loaiKhachHang"> Doanh Nghiệp Lớn
-                                        
-                                        <input class="p-2" type="radio" value="khachhangthuong" name="loaiKhachHang"> Khách Hàng Bình Thường
-                                    </li>
-                                    <li class="product__left--item">
-                                        <label for="name"><span>Tên khách hàng:</span> </label>
-                                        <input class="p-2" type="text" name="name" placeholder="Tên khách hàng" >
-                                    </li>
-                                    <li class="product__left--item">
-                                        <label for="email"><span>Email: </span> </label>
-                                        <input class="p-2" type="email" name="email" placeholder="Email" >
-                                    </li>
-                                    <li class="product__left--item">
-                                        <label for="sdt"><span>Số điện thoại: </span> </label>
-                                        <input class="p-2" type="text" name="phone" placeholder="Số điện thoại" >
-                                    </li>
-                                    <li class="product__left--item">
-                                        <label for="address"><span>Địa chỉ nhận hàng: </span> </label>
-                                        <input class="p-2" type="text" name="address" placeholder="Địa chỉ nhận hàng" >
-                                    </li>
-                                    <li class="product__left--item">
-                                        <label for="content"><span>Ghi chú: </span> </label>
-                                        <textarea class="p-2" type="text" name="content" ></textarea>
-                                    </li>
-                                    <li class="product__left--item">
-                                        <span>Tổng giá: </span>                               
-                                        <span class="me-5">{{ number_format($total) }}đ</span>
-                                    </li>
-                                    <li class="product__left--item d-flex">
-                                        <span class="uct__left--item"><i>Phí vận chuyển:</i> </span>
-                                        <div class="product__left--item-checkbox me-5">{{ number_format($ship) }}đ                
-                                        </div>
-                                    </li>
-                                    <li class="product__left--item">
-                                        <span>Tổng vận chuyển: </span>
-                                        <span class="me-5">{{ number_format($total_ship) }}đ</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <button class="btn btn-success bmtn-confirm " id="pay-all" name="pay-all" type="submit"  style="width: 40%;" >Đặt hàng</button>
-                    </div>            --}}
                 </div>
             </div> 
             <div class="col-lg-4 col-12">
@@ -132,7 +83,7 @@
                         <li class="detailOrder__info--item">
                             <input class="p-2" type="text" name="phone" placeholder="Số điện thoại" >
                         </li>
-                        <li class="detailOrder__info--item">
+                        {{-- <li class="detailOrder__info--item">
                             <select name="city" id="" class="p-2" name="address">
                                 <option value="city">Thành phố</option>
                                 <option value="city">Thành phố Cần Thơ</option>
@@ -152,8 +103,29 @@
                         </li>
                         <li class="detailOrder__info--item">
                             <input class="p-2" type="text" name="address" placeholder="Ấp, phường xã, ..." >
+                        </li> --}}
+                        <li class="detailOrder__info--item detailOrder__info--item--map" >
+                            <div class=" ">
+                                <select class="form-select form-select-sm mb-2 detailOrder__info--item--map"  id="city" aria-label=".form-select-sm" name="address">
+                                    <option value="" selected id="city" > -- Chọn tỉnh thành -- </option>                                      
+                                    <input name="city" class="d-none address_tinh"></input>         
+                                </select>
+                                          
+                                <select class="form-select form-select-sm mb-2 detailOrder__info--item--map" id="district" aria-label=".form-select-sm" name="address">
+                                    <option value="" selected > -- Chọn quận huyện --</option>
+                                    <input name="district" class="d-none address_huyen"></input>   
+                                </select>
+                                
+                                <select class="form-select form-select-sm detailOrder__info--item--map" id="ward" aria-label=".form-select-sm" name="address">
+                                    <option value="" selected > -- Chọn phường xã --</option>
+                                    <input name="ward" class="d-none address_xa"></input>   
+                                </select>
+                                <p id="selectedOption"></p>
+                            </div>  
                         </li>
-
+                        <li class="detailOrder__info--item">
+                            <input class="p-2" type="text" name="description" placeholder="Số nhà, ấp .... " >
+                        </li>
                         <li class="detailOrder__info--item">
                             <textarea class="p-2" type="text" name="content" placeholder="Ghi chú"></textarea>
                         </li> 
@@ -247,8 +219,71 @@
    
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var citis = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", method: "GET", responseType: "application/json",};
+    var promise = axios(Parameter);
+    promise.then(function (result) {
+        renderCity(result.data);
+    });
 
-
-
+    function renderCity(data) {
+        for (const x of data) {
+            citis.options[citis.options.length] = new Option(x.Name, x.Id);
+        }
+    citis.onchange = function () {
+        district.length = 1;
+        ward.length = 1;
+        if(this.value != ""){
+            // const result = data.filter(n => n.Id === this.value);
+            const result = data.filter(n => { 
+                if (n.Id === this.value) {
+                    const address = document.querySelector('.address_tinh')
+                    address.value = n.Name
+                    console.log(address.value = n.Name);
+                    return true
+                }
+                });
+            for (const k of result[0].Districts) {
+                district.options[district.options.length] = new Option(k.Name, k.Id);
+            }
+        }
+    };
+    district.onchange = function () {
+        ward.length = 1;
+        const dataCity = data.filter((n) => n.Id === citis.value);
+            if (this.value != "") {
+            const dataWards = dataCity[0].Districts.filter(n => {if(n.Id === this.value) {
+                const address_huyen = document.querySelector('.address_huyen')
+                address_huyen.value = n.Name
+                console.log(address_huyen.value = n.Name);
+                return true
+            }})[0].Wards;
+            
+                for (const w of dataWards) {
+                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
+                }
+            }
+        }; 
+        
+    }
+    // wards.onchange = function () {
+    //     const address_xa = document.querySelector('.address_xa');
+    //         address_xa.value = wards.options[09325].text;
+    //         console.log(address_xa.value = wards.options[09325].text);
+    //     return true;
+    // }
+    wards.onchange = function () {
+        const address_xa = document.querySelector('.address_xa');
+        const selectedIndex = wards.selectedIndex;
+        address_xa.value = wards.options[selectedIndex].text;
+        console.log(address_xa.value);
+        return true;
+    }
+</script>
 @endsection
 

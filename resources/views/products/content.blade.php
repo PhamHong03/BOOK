@@ -36,7 +36,7 @@
                         <p>Vận chuyển: Vận chuyển trong nước </p>
                     </div>
                     <div class="policy mt-2">
-                        <p>Chính sách đổi trả trong vòng 30 ngày! <a href="" class="me-1">Xem thêm tại đây!</a></p>
+                        <p>Chính sách đổi trả trong vòng 30 ngày! <a href="" class="me-1 " style="color: blue">Xem thêm tại đây!</a></p>
                     </div>
                     <form action="/add-cart" method="POST" id="add-to-cart">
                         <div class="quantity mt-3">
@@ -66,17 +66,17 @@
        </div>
        <div class="row desc">
             <div class="description--title">
-                <h4 class="text-center">Description</h4>
+                <h4 class="text-center">Tìm hiểu một ít về "{{ $product->name }}"  </h4>
             </div>
             <div class="description">
                 <p> {{ $product->description }} </p> 
-                {{ $product->content }}
-            </div>            
+                {!! html_entity_decode($product->content) !!}
+            </div>          
        </div>       
     </div>
    <section>
     <div class="container">
-        <h3 class="text-center mt-2">Sản phẩm liên quan</h3>
+        <h2 class="text-center mt-2"><i>Sản phẩm liên quan</i></h2>
         @include('products.list')
     </div>
    </section>

@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\DB;
 use function App\Helper\Helper\price_sal;
 class CartService 
 {
+    // protected $cart;
+
+    // public function __construct(Cart $cart)
+    // {
+    //     $this->cart = $cart;
+    // }
+
+    
     public function  create($request) {
          $qty = (int)$request->input('num-product');
 
@@ -73,6 +81,11 @@ class CartService
         return true;        
     }
 
+    public function  removeCart() {
+        $carts = Session::get('carts');                
+        unset($carts);
+        return true;
+    }
     public function  remove($id) {
         $carts = Session::get('carts');
         unset($carts[$id]);

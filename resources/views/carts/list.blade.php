@@ -21,7 +21,7 @@
                                 onclick="onDeleteAll(event)" value="Xóa tất cả"></input>
                                 @csrf
                                 <input class="btn btn-success btn-update me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
-                                <input type="submit" class="btn btn-pink me-1" value="Đơn hàng của tôi" >
+                                <input type="submit" class="btn btn-pink me-1" formaction="/order-cart" value="Đơn hàng của tôi" >
                             </div>
                         </div> 
                         @foreach ($products as $key => $product )         

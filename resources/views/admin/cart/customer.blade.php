@@ -24,11 +24,13 @@
                     <td>{{ $customer->created_at }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}" >
-                            <i class="fa-solid fa-eye"></i>
+                            <i class="fa-solid fa-eye"> </i> 
+                            
                         </a>
-                        <a class="btn btn-danger btn-sm" href ="#" onclick="removeRow( {{ $customer->id }}, '/admin/customers/destroy')" >
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
+                            {{-- <a class="btn btn-danger btn-sm" href ="#" onclick="removeRow( {{ $customer->id }}, '/admin/customers/destroy')" >
+                                <i class="fa-solid fa-trash"></i>
+                            </a> --}}
+                        
                     </td>
                 </tr>
             @endforeach

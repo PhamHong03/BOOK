@@ -116,6 +116,7 @@ Route::middleware(['admin'])->group(function() {
         Route::get('customers', [AdminCartController::class,'index']);
         Route::get('customers/view/{customer}', [AdminCartController::class, 'show']);
         Route::post('customers/view/{customer}', [AdminCartController::class, 'show']);
+        Route::DELETE('customers/destroy', [AdminCartController::class, 'destroy'])->name('customers.destroy');
         Route::post('customers/view/delivery', [AdminCartController::class, 'delivery'])->name('delivery');
     });    
    
@@ -154,7 +155,7 @@ Route::get('carts/delete/{id}', [CartController::class, 'remove']);
 Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/delete');
 
 // Route::get('carts/order', [CartController::class, 'detailOrder'])->name('carts/detail');
-// Route::post('carts/order', [CartController::class, 'addCart']);
+Route::post('order-cart', [CartController::class, 'order']);
 
 
 Route::get('/register', [UserController::class, 'register'])->name('register');

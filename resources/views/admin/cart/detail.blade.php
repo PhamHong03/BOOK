@@ -2,7 +2,7 @@
 
 
 @section('content')
-<form method="POST" id="form" class="form">
+<form method="GET" id="form" class="form">
     <div class="customer mt-2">
         <ul>
             <li>Tên khách hàng : <strong>{{ $customers->name }}</strong></li>
@@ -46,7 +46,7 @@
                             </td>
                             <td class="column-2 table_admin">{{ $cart->product->name }}</td>
                             <td class="column-3 table_admin">{{ number_format($cart->price)}}đ</td>
-                            <td class="column-4 table_admin">{{ $cart->qty }}</td>
+                            <td class="column-4 table_admin">x{{ $cart->qty }}</td>
                             <td class="column-3 table_admin">{{ number_format($price) }}đ</td>
                         </tr>                                    
                     @endforeach
@@ -58,7 +58,7 @@
                 </tbody>
             </table>
         </div>
-        <button class=" btn btn-success " id="btn-delivery" style="float: right" onclick="duyetdon(event)">Vận chuyển</button>
+        <button class=" btn btn-success " id="btn-delivery" style="float: right" onclick="duyetdon(event)">Giao hàng</button>
 
     </div>
     @csrf
@@ -78,20 +78,20 @@
         buttonsStyling: false
         });
         swalWithBootstrapButtons.fire({
-            title: "Bạn muốn vận chuyển không?",
+            title: "Bạn muốn giao hàng đơn này không?",
             text: "Khách hàng có lẽ đang cần bạn!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Xác nhận đơn!",
-            cancelButtonText: "Không!",
+            confirmButtonText: " Xác nhận!", 
+            cancelButtonText: "Không! ",
             reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    form.setAttribute('action', 'customers/view/delivery');
+                    form.setAttribute('action','/admin/customers');
                     form.submit();
                     swalWithBootstrapButtons.fire({
                     title: "Xác nhận thành công!",
-                    text: "Đơn hàng sẽ được vận chuyển",
+                    text: "Đơn hàng sẽ được giao!",
                     icon: "success"
                     });
                 } else if (

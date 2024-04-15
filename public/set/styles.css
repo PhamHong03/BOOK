@@ -70,12 +70,15 @@
     align-items: center;
 }
 .carousel_width{
-    width: 50%;
+    width: 60%;
+    margin: 0 40px;
 }
 .carousel-item{
     text-align: center;
 
 }
+
+
 .content{
     display: flex;
     margin: 20px;

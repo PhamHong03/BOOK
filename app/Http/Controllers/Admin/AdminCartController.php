@@ -39,4 +39,15 @@ class AdminCartController extends Controller
         ]);
     }
 
+    public function destroy(Customer $customer) {
+        $result = $this->cart->getCustomer()->delete($customer);
+
+        if($result){
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công'
+            ]);
+        }
+        return response()->json(['error' => true]);
+    }
 }

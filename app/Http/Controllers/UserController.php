@@ -46,8 +46,11 @@ class UserController extends Controller
 
     public function logout() {
         Auth::logout();
+        // Session::forget('carts');
+        session()->pull('carts');
         return redirect()->back();
     }
+    
     public function store(RegisterForm $request) {
         return back()->with('message', 'Form submitted successfully ');
     }

@@ -40,6 +40,14 @@ class CartController extends Controller
             'carts' => Session::get('carts')
         ]);
     }
+    public function  order() {
+        $products = $this->cartService->getProduct();
+        return view('carts.order', [
+            'title' => 'ĐƠN HÀNG',
+            'products' => $products,
+            'carts' => Session::get('carts')
+        ]);
+    }
 
     public function update(Request $request) {       
         

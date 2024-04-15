@@ -27,6 +27,6 @@ class SendMail implements ShouldQueue
      */
     public function handle(): void
     {
-        dd($this->email);
+        // dd($this->email);
     }
 }

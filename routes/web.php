@@ -13,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuControllers;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductControllers;
 use App\Http\Controllers\UserController;
 
@@ -118,6 +119,9 @@ Route::middleware(['admin'])->group(function() {
         Route::post('customers/view/{customer}', [AdminCartController::class, 'show']);
         Route::DELETE('customers/destroy', [AdminCartController::class, 'destroy'])->name('customers.destroy');
         Route::post('customers/view/delivery', [AdminCartController::class, 'delivery'])->name('delivery');
+
+        
+
     });    
    
 });
@@ -155,8 +159,9 @@ Route::get('carts/delete/{id}', [CartController::class, 'remove']);
 Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/delete');
 
 // Route::get('carts/order', [CartController::class, 'detailOrder'])->name('carts/detail');
-Route::post('order-cart', [CartController::class, 'order']);
 
+Route::get('order-cart', [CartController::class, 'order'])->name('order');
+Route::post('order-cart', [CartController::class, 'order'])->name('order');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 

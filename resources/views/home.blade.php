@@ -21,7 +21,26 @@
             </div>
         </div>
     </div>
-    
+    @php
+        $menusHtml =  App\Helper\Helper::menus2($menus);
+    @endphp
+    {{-- <div class="container category">  
+      <div class="row">
+          <div class="icon">
+            <i class="fa-solid fa-list"></i>
+            Danh mục các sản phẩm
+          </div>
+      </div>    
+      <div class="row">
+          <div class="category_30">
+            <span>{!! $menusHtml !!}</span>
+          </div>
+          <div class="category_70">
+              @include('products.list')
+          </div>
+      </div>
+        
+    </div> --}}
     
    <div class="carousel-home">
     <div class="container">

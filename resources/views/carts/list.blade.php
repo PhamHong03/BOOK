@@ -2,7 +2,7 @@
 @extends('head')
 @section('content')
 <form  method="POST" id="form" class="form">     
-    <div class="container">
+    <div class="container ">
         <div class="row">
             @if(count($products) != 0)
             @include('admin.alert')    
@@ -21,7 +21,7 @@
                                 onclick="onDeleteAll(event)" value="Xóa tất cả"></input>
                                 @csrf
                                 <input class="btn btn-success btn-update me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
-                                <input type="submit" class="btn btn-pink me-1" formaction="/order-cart" value="Đơn hàng của tôi" >
+                                {{-- <input type="submit" class="btn btn-primary me-1" formaction="/order-cart" value="Đơn hàng của tôi" > --}}
                             </div>
                         </div> 
                         @foreach ($products as $key => $product )         

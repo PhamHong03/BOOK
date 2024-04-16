@@ -4,10 +4,13 @@ namespace App\Http\Services;
 use App\Jobs\SendMail;
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 use function App\Helper\Helper\price_sal;
 class CartService 
 {
@@ -95,26 +98,26 @@ class CartService
 
 
     public function addCart($request) {
-        $address = $request->input('description') .', '.$request->input('ward')  . ', '. $request->input('district') . ', '.$request->input('city');
-        
+        $address = $request->input('description') .', '.$request->input('ward')  . ', '. $request->input('district') . ', '.$request->input('city');            
         try{
             DB::beginTransaction();
             $carts = Session::get('carts');
 
             if(is_null($carts)) {
                 return false;
-            }
-            
+            }                
             $customer = Customer::create([
                 'name' => $request->input('name') ,
                 'phone' => $request->input('phone'),
                 'address' => $address,
                 'email' => $request->input('email'),
                 'content' => $request->input('content')
-            ]);
-
-            $this->infoProductCart($carts, $customer->id);
+            ]);    
             
+            
+            $this->infoProductCart($carts, $customer->id); 
+
+
             DB::commit();
 
             Session::flash('success', 'Đặt hàng thành công');
@@ -123,17 +126,18 @@ class CartService
             SendMail::dispatch($request->input('email'))->delay(now()->addSecond(2));
 
             Session::forget('carts');
+
         }catch(\Exception $err) {
 
             DB::rollBack();
 
-            Session::flash('error', 'Đặt hàng không thành công, vui lòng thử lại');
-            
+            Session::flash('error', 'Đặt hàng không thành công, vui lòng thử lại');   
+                         
             return false;
         }
         return true;
     }
-
+    
     protected function infoProductCart($carts, $customer_id) {
 
         $productId = array_keys($carts);
@@ -144,7 +148,6 @@ class CartService
                 ->get();     
     
         $data = [];
-
         foreach($products as  $product) {
             $data[] = [
                 'customer_id' => $customer_id,
@@ -152,11 +155,12 @@ class CartService
                 'qty' => $carts[$product->id],
                 'price' => ($product->price - ( $product->price * ($product->price_sale / 100)))
 
-            ];
+            ];            
         }
-
         return Cart::insert($data);
     }
+    
+
 
     public function getCustomer() {
         return Customer::orderByDesc('id')->paginate(8);
@@ -168,6 +172,8 @@ class CartService
             $query->select('id', 'name', 'thumnb');
         }])->get() ;
     }
+
+    
 }
 
 

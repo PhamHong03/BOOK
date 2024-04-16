@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
+use App\Models\Cart;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
+
 
 use function Laravel\Prompts\alert;
 
@@ -40,14 +43,7 @@ class CartController extends Controller
             'carts' => Session::get('carts')
         ]);
     }
-    public function  order() {
-        $products = $this->cartService->getProduct();
-        return view('carts.order', [
-            'title' => 'ĐƠN HÀNG',
-            'products' => $products,
-            'carts' => Session::get('carts')
-        ]);
-    }
+    
 
     public function update(Request $request) {       
         
@@ -71,20 +67,14 @@ class CartController extends Controller
         return redirect('/carts');
     }
 
-    
-    // public function addOrder(Request $request){
-    //     dd($request);
-    // }
-    // public function detailOrder() {
-    //     return view('carts.order', [
-    //         'title' => 'CHI TIẾT ĐẶT HÀNG'
-    //     ]);
-    // }
-    
     public function  addCart(Request $request)  {
         
         $this->cartService->addCart($request);
-
+        
         return redirect()->back();
+    }
+    public function order(Customer $customer){
+        
+        
     }
 }

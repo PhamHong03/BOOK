@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Models\Customer;
+use App\Models\OrderDetail;
 
 class AdminCartController extends Controller
 {
@@ -23,25 +24,20 @@ class AdminCartController extends Controller
     }
     public function delivery() {
     
-        // return view('admin.cart.delivery', [
-        //     'title' => 'Danh Sách Vận Chuyển'
-        //     // 'customers' => $this->cart->getCustomer()
-        // ]);
+       
     }
     
     public function show(Customer $customer) {
        $carts = $this->cart->getProductForCart($customer);
-
-        return view('admin.cart.detail', [
+         return view('admin.cart.detail', [
             'title' => 'Chi Tiết Đơn Hàng : ' .$customer->name,
             'customers' => $customer,
             'carts' => $carts          
         ]);
     }
-
+        
     public function destroy(Customer $customer) {
-        $result = $this->cart->getCustomer()->delete($customer);
-
+        $result = $this->cart->getCustomer()->delete($customer);        
         if($result){
             return response()->json([
                 'error' => false,

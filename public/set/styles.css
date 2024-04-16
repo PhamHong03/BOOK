@@ -78,6 +78,10 @@
 
 }
 
+/* .cateroty_menus{
+    display: flex;
+    flex-direction: row;
+} */
 
 .content{
     display: flex;

@@ -38,6 +38,9 @@
                     <div class="policy mt-2">
                         <p>Chính sách đổi trả trong vòng 30 ngày! <a href="" class="me-1 " style="color: blue">Xem thêm tại đây!</a></p>
                     </div>
+                    <div class="policy mt-2">
+                        <p> Trong kho còn lại : <i>{{ $product->quantity }} quyển</i></p>
+                    </div>
                     <form action="/add-cart" method="POST" id="add-to-cart">
                         <div class="quantity mt-3">
                             <span style="margin-right: 20px; font-size: 18px; font-weight: 300"

@@ -61,6 +61,20 @@ class Helper {
         return $html;
 
     }
+    public static function menus2($menus, $parent_id = 0) {
+        $html = '';
+
+        foreach($menus as $key => $menu) {
+            if($menu->parent_id == $parent_id) {
+                $html .= '                   
+                    <div class="category_menus"> 
+                        ' .$menu->name . '
+                    </div>
+                ';
+            }
+        }
+        return $html;
+    }
 
     public static function price($price = 0, $price_sale = 0)  {
         if($price_sale != 0) return number_format($price_sale);

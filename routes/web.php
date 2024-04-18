@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminCartController;
+use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\ImportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Users\LoginController;
@@ -120,7 +121,10 @@ Route::middleware(['admin'])->group(function() {
         Route::DELETE('customers/destroy', [AdminCartController::class, 'destroy'])->name('customers.destroy');
         Route::post('customers/view/delivery', [AdminCartController::class, 'delivery'])->name('delivery');
 
-        
+        #account
+        Route::get('account', [AuthorController::class, 'account']);
+        Route::get('account/edit/{user}', [AuthorController::class, 'show']);
+        Route::post('account/edit/{user}', [AuthorController::class, 'update']);
 
     });    
    
@@ -160,8 +164,8 @@ Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/d
 
 // Route::get('carts/order', [CartController::class, 'detailOrder'])->name('carts/detail');
 
-Route::get('order-cart', [CartController::class, 'order'])->name('order');
-Route::post('order-cart', [CartController::class, 'order'])->name('order');
+Route::get('order-cart', [OrderController::class, 'order'])->name('order');
+Route::post('order-cart', [OrderController::class, 'order'])->name('order');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 
@@ -173,6 +177,7 @@ Route::post('/login', [UserController::class, 'postLogin']);
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
+Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 // Route::get('/forgotPW', [AuthManagerController::class, 'forgotPW'])->name('forgotPW');
 
 

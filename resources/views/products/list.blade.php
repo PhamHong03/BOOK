@@ -1,6 +1,6 @@
 
+
     <div class="row mt-4" >
-        <h2><i>Sản phẩm mới</i></h2>
         @foreach ($products as $key => $product )
             
             <div class="col-lg-2 col-sm-6 col-md-4 col-12 mb-2 text-center product id">

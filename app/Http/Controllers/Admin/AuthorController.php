@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Services\Users\UserService;
 
 class AuthorController extends Controller
 {
+    protected $user ;
+    public function __construct(UserService $user)
+    {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -34,9 +41,12 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('admin.accounts.edit', [
+            'title' => 'Chỉnh sửa tài khoản',
+            'user' => $user
+        ]);
     }
 
     /**
@@ -44,15 +54,20 @@ class AuthorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $result = $this->user->update($request, $user);
+        
+        if($result) {
+            return redirect('/admin/account');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -62,4 +77,13 @@ class AuthorController extends Controller
     {
         //
     }
+
+    public function account(){
+        $user = User::orderByDesc('id')->paginate(8);
+        return view('admin.accounts.account', [
+            'title' => 'Danh sách tài khoản người dùng',
+            'user' => $user
+        ]);
+    }
+
 }

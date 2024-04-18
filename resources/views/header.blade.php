@@ -49,7 +49,7 @@
                     @if (Auth::check())
                         <i class="me-2 fa-solid fa-user"style="border-radius: 50%; background-color: #FFC1C2; padding:7px 8px" ></i> {{ Auth::user()->name }}
                         <div class="header__account--list">
-                            <button class="button button-white"><a href="#">Trang cá nhân</a></button>
+                            <button class="button button-white"><a href="{{ route('profile') }}">Trang cá nhân</a></button>
                             <button class="button button-white"><a href="{{ route('order') }}">Đơn hàng của bạn</a></button>
                             <button class="button button-red"><a href="{{ route('logout') }}">Đăng xuất</a></button>
                         </div>
@@ -58,7 +58,7 @@
                         <div class="header__account--list">
                             <button class="button button-red"><a href="{{ route('register') }}">Đăng ký</a></button>
                             <button class="button button-red"><a href="{{ route('login') }}">Đăng nhập</a></button>
-                            <button class="button button-white"><a href="{{ route('logout') }}">Đăng xuất</a></button>
+                            <button class="button button-white"><a href="">Facebook</a></button>
                         </div>
                     @endif                        
                     

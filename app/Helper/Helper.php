@@ -99,4 +99,15 @@ class Helper {
 
         return $price_sal;
     }
+
+    // public static function freeShip(){
+    //     $freeShipInput = request()->input('freeShipInput'); 
+    //     $ship = 0;
+    //     // dd($freeShipInput);
+    //     if ($freeShipInput == '1') {
+    //         $ship = 0; 
+    //     } else {
+    //         $ship = 42000;         
+    //     }        return $ship;
+    // }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Models\Customer;
 use App\Models\OrderDetail;
+use App\Models\User;
 
 class AdminCartController extends Controller
 {
@@ -22,12 +23,10 @@ class AdminCartController extends Controller
             'customers' => $this->cart->getCustomer()
         ]);
     }
-    public function delivery() {
     
-       
-    }
     
     public function show(Customer $customer) {
+        
        $carts = $this->cart->getProductForCart($customer);
          return view('admin.cart.detail', [
             'title' => 'Chi Tiết Đơn Hàng : ' .$customer->name,
@@ -35,15 +34,6 @@ class AdminCartController extends Controller
             'carts' => $carts          
         ]);
     }
-        
-    public function destroy(Customer $customer) {
-        $result = $this->cart->getCustomer()->delete($customer);        
-        if($result){
-            return response()->json([
-                'error' => false,
-                'message' => 'Xóa thành công'
-            ]);
-        }
-        return response()->json(['error' => true]);
-    }
+    
+    
 }

@@ -10,6 +10,7 @@
                 <th>Danh mục </th>
                 <th>Giá gốc </th>
                 <th>% giảm</th>
+                <th>SL Kho</th>
                 <th>Tác giả </th>
                 <th>Nhà Xuất Bản</th>
                 <th>Trạng thái</th>
@@ -26,6 +27,7 @@
                     <td>{{ $product->menu->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->price_sale }}</td>
+                    <td>{{ $product->quantity}}</td>
                     <td>{{ $product->author }}</td>
                     <td>{{ $product->publisher }}</td>
                     <td>{!! \App\Helper\Helper::active( $product->active) !!}</td>

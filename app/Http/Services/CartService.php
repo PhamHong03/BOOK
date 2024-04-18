@@ -6,7 +6,9 @@ use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\OrderDetail;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -112,25 +114,32 @@ class CartService
                 'address' => $address,
                 'email' => $request->input('email'),
                 'content' => $request->input('content')
-            ]);    
-            
+            ]);               
             
             $this->infoProductCart($carts, $customer->id); 
 
-
+            // foreach($carts as $cart){
+            //     OrderDetail::create([
+            //         'cart_id' => $cart->id,
+            //         'product_id' => $cart->product_id,
+            //         'user_id' => Auth::user()->id,
+            //         'qty' => $cart->qty,
+            //         'price' => $cart->price
+            //     ]);
+            // }
             DB::commit();
-
+            
             Session::flash('success', 'Đặt hàng thành công');
 
             #Queue
             SendMail::dispatch($request->input('email'))->delay(now()->addSecond(2));
-
+            
             Session::forget('carts');
 
         }catch(\Exception $err) {
 
             DB::rollBack();
-
+            dd($err);
             Session::flash('error', 'Đặt hàng không thành công, vui lòng thử lại');   
                          
             return false;
@@ -157,22 +166,22 @@ class CartService
 
             ];            
         }
+                
         return Cart::insert($data);
-    }
-    
+    }   
 
 
     public function getCustomer() {
         return Customer::orderByDesc('id')->paginate(8);
     }
 
+  
     
     public function getProductForCart($customer) {
         return $customer->carts()->with(['product' => function($query) {
             $query->select('id', 'name', 'thumnb');
         }])->get() ;
     }
-
     
 }
 

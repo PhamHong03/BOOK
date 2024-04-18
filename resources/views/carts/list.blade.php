@@ -1,6 +1,7 @@
 
 @extends('head')
 @section('content')
+
 <form  method="POST" id="form" class="form">     
     <div class="container ">
         <div class="row">
@@ -11,7 +12,8 @@
                 @php
                     $freeShip = 0;
                     $total = 0;
-                    $total_ship = 0;                    
+                    $total_ship = 0; 
+                         
                 @endphp 
                 <div class="container cart ">    
                     <div class="product__cart  me-5">               
@@ -21,7 +23,6 @@
                                 onclick="onDeleteAll(event)" value="Xóa tất cả"></input>
                                 @csrf
                                 <input class="btn btn-success btn-update me-1" type="submit" onclick="updateCart()"  value="Cập nhật giỏ hàng" formaction="/update-cart">
-                                {{-- <input type="submit" class="btn btn-primary me-1" formaction="/order-cart" value="Đơn hàng của tôi" > --}}
                             </div>
                         </div> 
                         @foreach ($products as $key => $product )         
@@ -30,11 +31,20 @@
                                 $priceEnd = floatval($price) *  $carts[$product->id] ;
                               
                                 $total += $priceEnd;
+                                $ship = floatval(0);
 
-                                $ship = floatval(42000);
-                                
-                                $total_ship = $total + $ship;                        
+                                if (isset($_POST['freeShipCheck']) && $_POST['freeShipCheck'] == 1) {
+                                    $ship = floatval(42000 - 30000);
+                                } else {
+                                    $freeShipFromInput = isset($_POST['freeShipInput']) ? intval($_POST['freeShipInput']) : 0;
+                                    if ($freeShipFromInput === 1) {
+                                    $ship = floatval(42000 - 30000);
+                                    }
+                                }
+
+                                $total_ship = $total + $ship;                       
                             @endphp
+                            
                             <div class="row">                        
                                 <div class="product__cart product__cart--body ">
                                     <div class="product__cart--item product__cart--item-img">
@@ -83,27 +93,6 @@
                         <li class="detailOrder__info--item">
                             <input class="p-2" type="text" name="phone" placeholder="Số điện thoại" >
                         </li>
-                        {{-- <li class="detailOrder__info--item">
-                            <select name="city" id="" class="p-2" name="address">
-                                <option value="city">Thành phố</option>
-                                <option value="city">Thành phố Cần Thơ</option>
-                                <option value="city">Thành phố Hồ Chí Minh</option>
-                                <option value="city">Thành phố Đà Nẵng</option>
-                                <option value="city">Thành phố Huế</option>
-                            </select>
-                        </li>
-                        <li class="detailOrder__info--item" >
-                            <select name="province" id="" class="p-2" name="address">
-                                <option value="province">Tỉnh thành </option>
-                                <option value="province">Tỉnh An Giang</option>
-                                <option value="province">Tỉnh Cà Mau</option>
-                                <option value="province">Tỉnh Sóc Trăng</option>
-                                <option value="province">Tỉnh Vĩnh Long</option>
-                            </select>
-                        </li>
-                        <li class="detailOrder__info--item">
-                            <input class="p-2" type="text" name="address" placeholder="Ấp, phường xã, ..." >
-                        </li> --}}
                         <li class="detailOrder__info--item detailOrder__info--item--map" >
                             <div class=" ">
                                 <select class="form-select form-select-sm mb-2 detailOrder__info--item--map"  id="city" aria-label=".form-select-sm" name="address">
@@ -135,8 +124,11 @@
                     <h4>Vận chuyển</h4>
                 </div>
                 <div class="a d-flex" style="justify-content: space-between">
-                    <div class=""><input type="radio" id="freeshipCheck" class="freeshipCheck" name="freeshipCheck" value="">Miễn phí vận chuyển </div>
+                    <div class=""><input type="radio" id="freeshipCheck" class="freeshipCheck" name="freeshipCheck" value="0">Miễn phí vận chuyển </div>
+                    <input type="hidden" id="freeShipInput" value="0">
+
                     <span onclick="appFreeShip()" class="freeship" ><i>Áp mã freeship</i></span>
+
                 </div>
                 <div class="detailOrder__title mt-4">
                     <h4>Thanh Toán</h4>
@@ -153,8 +145,9 @@
                         <span>{{ number_format($total) }}đ</span>
                     </div>
                     <div class="total__price--ship">
-                        <span>Vận chuyển</span>                        
-                            <span>{{ number_format($ship) }}đ</span>                       
+                        <span>Vận chuyển</span>      
+
+                        <span>{{ number_format($ship) }}đ</span>                       
                         
                     </div>
                     <div class="total__price--sum">
@@ -189,9 +182,16 @@
     
     function appFreeShip() {        
         var checkbox = document.getElementById('freeshipCheck');
-        checkbox.checked = 1;
+        checkbox.checked = true;
         freeShip = 1;
+        
+        document.getElementById('freeShipInput').value = 1;
     }
+    // function appFreeShip() {        
+    //     var checkbox = document.getElementById('freeshipCheck');
+    //     checkbox.checked = 1;
+    //     freeShip = 1;
+    // }
     function onDeleteAll(event) {
         event.preventDefault()
         const form = document.querySelector('.form');

@@ -27,7 +27,6 @@ class LoginController extends Controller
                 'email' => $request->input('email'),
                 'password' => $request->input('password'),
                 'role' =>  1
-                // 'level' => 1
             ], $request->input('remember'))){
              return redirect()->route('admin');
         }

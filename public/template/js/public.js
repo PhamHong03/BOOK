@@ -11,14 +11,20 @@ function loadMore() {
     $.ajax({
         type : 'POST',
         dataType : 'JSON',
-        data : { page },
+        data : { page  },
         url : '/services/load-product',
         success : function (result) {
            if(result.html !== '') {
                 $('#loadProduct').append(result.html);
                 $('#page').val(page + 1);
            }else{
-                alert('Đã load xong sản phẩm');
+                // alert('Đã load xong sản phẩm');
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Đã load xong sản phẩm!',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
                 $('#button-loadMore').css('display','none');
            }
         }

@@ -91,7 +91,7 @@
           </li>
 
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa-regular fa-images"></i>
               <p>
@@ -113,7 +113,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -132,6 +132,26 @@
               </li>
             </ul>
           </li>
+          
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-users"></i>
+              <p style="margin-left: 7px">
+                Tài Khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/account" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách tài khoản </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

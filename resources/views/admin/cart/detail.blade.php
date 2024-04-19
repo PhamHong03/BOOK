@@ -59,7 +59,6 @@
             </table>
         </div>
         <button class=" btn btn-success " id="btn-delivery" style="float: right" onclick="duyetdon(event)">Giao hàng</button>
-
     </div>
     @csrf
 </form>

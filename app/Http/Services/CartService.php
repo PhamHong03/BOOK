@@ -120,15 +120,17 @@ class CartService
 
             // foreach($carts as $cart){
             //     OrderDetail::create([
-            //         'cart_id' => $cart->id,
+            //         'cart_id' => i
             //         'product_id' => $cart->product_id,
             //         'user_id' => Auth::user()->id,
             //         'qty' => $cart->qty,
             //         'price' => $cart->price
             //     ]);
             // }
+
             DB::commit();
-            
+
+
             Session::flash('success', 'Đặt hàng thành công');
 
             #Queue
@@ -144,6 +146,9 @@ class CartService
                          
             return false;
         }
+
+       
+
         return true;
     }
     
@@ -164,18 +169,29 @@ class CartService
                 'qty' => $carts[$product->id],
                 'price' => ($product->price - ( $product->price * ($product->price_sale / 100)))
 
-            ];            
+            ];  
+                     
         }
-                
+        
+        // foreach($products as $product){
+        //     $productId = array_keys($carts);
+
+        //     DB::table('products')->where('id', $productId)->decrement('quantity', $carts[$product->id]);
+            
+        // }
+ 
+        foreach ($products as $product) {
+            $productId = $product->id; 
+            DB::table('products')->where('id', $productId)->decrement('quantity', $carts[$productId]);
+        }
+
         return Cart::insert($data);
     }   
-
 
     public function getCustomer() {
         return Customer::orderByDesc('id')->paginate(8);
     }
 
-  
     
     public function getProductForCart($customer) {
         return $customer->carts()->with(['product' => function($query) {
@@ -183,6 +199,7 @@ class CartService
         }])->get() ;
     }
     
+
 }
 
 

@@ -38,15 +38,29 @@ class UserController extends Controller
 
     public function postLogin(LoginForm $request)  {
         
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password ]) && Auth::user()->role === 0 && Auth::user()->active === 1) {
-            return redirect()->route('bookstore');
+        // if(Auth::attempt(['email' => $request->email, 'password' => $request->password ])
+        //     && (Auth::user()->active === 1) 
+        //     && (Auth::user()->role === 0)) 
+        // {
+        //     return redirect()->route('bookstore');
+        // }
+        
+        // return redirect()->back()->with('error', 'Thất bại! Vui lòng kiểm tra lại email hoặc password');
+
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password ])) {
+            if (Auth::user()->active === 1 && Auth::user()->role === 0) {
+                return redirect()->route('bookstore');
+            } else {
+                Auth::logout();
+            }
         }
-        return redirect()->back()->with('error', 'Thất bại! Vui lòng kiểm tra lại email hoặc password');
+        return redirect()->back()->with('error', 'Thất bại! Vui lòng kiểm tra lại email hoặc password , Có thể bạn không phải khách hàng của chúng tôi!');
+
     }
 
     public function logout() {
         Auth::logout();
-        // Session::forget('carts');
         session()->pull('carts');
         return redirect()->back();
     }

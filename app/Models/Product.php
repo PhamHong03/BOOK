@@ -18,7 +18,8 @@ class Product extends Model
         'active',
         'thumnb',
         'author',
-        'publisher'
+        'publisher',
+        'quantity'
     ];
 
     public function menu() {

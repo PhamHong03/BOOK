@@ -130,10 +130,15 @@
                   <p>Danh sách đơn hàng </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/admin/approve" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Đơn hàng đã duyệt</p>
+                </a>
+              </li>
             </ul>
           </li>
-          
-          
+      
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-users"></i>
@@ -147,6 +152,25 @@
                 <a href="/admin/account" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách tài khoản </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+              
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-chart-simple"></i>
+              <p style="margin-left: 7px">
+                Thống Kê
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/thongke" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thống kê doanh thu</p>
                 </a>
               </li>
             </ul>

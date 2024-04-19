@@ -58,6 +58,10 @@
             </div>
             
             <div class="form-group">
+                <label>Số lượng </label>
+                <input type="number " value="{{ old('quantity') }}" name="quantity" class="form-control">
+            </div>   
+            <div class="form-group">
                 <label>Mô tả </label>
                 <textarea name="description" class="form-control">{{ old('description') }}</textarea>
             </div>   

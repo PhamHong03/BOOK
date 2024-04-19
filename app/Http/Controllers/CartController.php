@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 
@@ -37,6 +39,7 @@ class CartController extends Controller
 
     public function  show() {
         $products = $this->cartService->getProduct();
+
         return view('carts.list', [
             'title' => 'GIỎ HÀNG',
             'products' => $products,
@@ -67,8 +70,8 @@ class CartController extends Controller
         return redirect('/carts');
     }
 
-    public function  addCart(Request $request)  {
-        
+    public function addCart(Request $request)  {
+
         $this->cartService->addCart($request);
         
         return redirect()->back();

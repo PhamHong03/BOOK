@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Models\Customer;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\User;
 
 class AdminCartController extends Controller
@@ -35,5 +36,34 @@ class AdminCartController extends Controller
         ]);
     }
     
+    public function approve(Request $request){
+
+        return view('admin.cart.approve', [
+            'title' => 'Đơn đã duyệt',
+        ]);
+    }
+
+    public function doanhThu(Request $request){
+        $startDate = $request->input('created_at');
+        $endDate = $request->input('updated_at');
+
+        $products = Product::with('carts')->get();
+
+        $productRevenues = [];
+
+        foreach ($products as $product) {
+            $productRevenue = 0;
+
+            foreach ($product->orders as $order) {
+                foreach ($order->orderItems as $orderItem) {
+                    if ($orderItem->product_id === $product->id) {
+                        $productRevenue += $orderItem->quantity * $orderItem->price;
+                    }
+                }
+            }
+            $productRevenues[$product->id] = $productRevenue;
+        }
+        return $productRevenue;
+    }
     
 }

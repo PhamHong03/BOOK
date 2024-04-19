@@ -16,8 +16,11 @@ class AdminAuthenticate
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->role == 1 && Auth::user()->active == 1) {
-            return $next($request);
+        if(Auth::check()) {
+            if(Auth::user()->role == 1 && Auth::user()->active == 1){
+                
+                return $next($request);
+            }
         }
         
         return redirect()->route('admin-login');

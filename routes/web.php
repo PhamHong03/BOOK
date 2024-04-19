@@ -121,10 +121,16 @@ Route::middleware(['admin'])->group(function() {
         Route::DELETE('customers/destroy', [AdminCartController::class, 'destroy'])->name('customers.destroy');
         Route::post('customers/view/delivery', [AdminCartController::class, 'delivery'])->name('delivery');
 
+
+        Route::get('approve', [AdminCartController::class, 'approve'])->name('approve');
+
         #account
         Route::get('account', [AuthorController::class, 'account']);
         Route::get('account/edit/{user}', [AuthorController::class, 'show']);
         Route::post('account/edit/{user}', [AuthorController::class, 'update']);
+
+        #thongke
+        Route::get('thongke', [ProductController::class, 'thongke']);
 
     });    
    

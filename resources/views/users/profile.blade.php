@@ -17,7 +17,13 @@
                 @if (Auth::check())
                 <div class="profile__item"><i>Tên của bạn:</i> <strong>{{ Auth::user()->name }}</strong></div>
                 <div class="profile__item"><i>Email của bạn: </i> <strong>{{ Auth::user()->email }}</strong></div>
-                <div class="profile__item"><i>Vai trò: </i> <a href="{{ route('bookstore') }}"><strong>Khách hàng tiềm năng</strong></a></div>
+                <div class="profile__item"><i>Vai trò: </i> 
+                    @if (Auth::user()->role == 0)
+                        <a href="{{ route('bookstore') }}"><strong>Khách hàng tiềm năng</strong></a>
+                    @else                        
+                        <a href="{{ route('bookstore') }}"><strong>Quản lý cửa hàng</strong></a>
+                    @endif
+                </div>
                 @endif
             </div>
         </div>

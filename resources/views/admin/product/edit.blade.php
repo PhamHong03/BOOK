@@ -44,7 +44,7 @@
                 </div>
             </div>
             
-            div class="row">
+            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="menu">Tác Giả </label>
@@ -58,6 +58,11 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label>Số lượng </label>
+                <input type="number " value="{{ $product->quantity }}" name="quantity" class="form-control">
+            </div> 
 
             <div class="form-group">
                 <label>Mô tả </label>

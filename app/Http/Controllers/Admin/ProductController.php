@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
 use App\Http\Services\Product\ProductAdminService;
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Http\Services\CartService;
 
 use function Laravel\Prompts\alert;
 
@@ -91,5 +94,11 @@ class ProductController extends Controller
             ]);
         }
         return response()->json(['error' => true]);
+    }
+
+    public function  thongke() {
+        return view('admin.thongke', [
+            'title' => 'Thống kê'
+        ]);
     }
 }

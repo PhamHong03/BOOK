@@ -14,7 +14,8 @@ class UserService
     public function update($request, $user) {
         try{
             
-            $user->fill($request->all());
+            $user->role = $request->input('role');
+            $user->active = $request->input('active');
             $user->save();
 
             Session::flash('success', 'Cập nhật thành công');

@@ -23,17 +23,20 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                        <select name="{{ $user->role }}" id="" class="p-1">
-                            <option value="">Vai trò</option>
-                            <option value="{{ $user->role }}" {{ $user->role == 0 ? 'selected' : '' }}>Khách hàng</option>
-                            <option value="{{ $user->role }}" {{ $user->role == 1 ? 'selected' : '' }}>Người quản trị</option>
+                        {{-- <input type="text" value="{{ $user->role }}" style="width: 50px" > --}}
+                        <select name="role" id="" class="p-1" >
+                            <option value="" class="disible">Vai trò</option>
+                            <option value="0" {{ $user->role == 0 ? 'selected' : '' }}>Khách hàng</option>
+                            <option value="1" {{ $user->role == 1 ? 'selected' : '' }}>Người quản trị</option>
                         </select>                        
                     </td>
                     <td>
-                        <select name="{{ $user->active }}" id="" class="p-1">
+                        {{-- <input type="text" value="{{ $user->active }}" style="width: 50px" > --}}
+
+                        <select name="active" id="" class="p-1">
                             <option value="">Trạng thái</option>
-                            <option value="{{ $user->active }}" {{ $user->active == 0 ? 'selected' : '' }}>Vô hiệu hóa</option>
-                            <option value="{{ $user->active }}" {{ $user->active == 1 ? 'selected' : '' }}>Đang hoạt động</option>
+                            <option value="0" {{ $user->active == 0 ? 'selected' : '' }}>Vô hiệu hóa</option>
+                            <option value="1" {{ $user->active == 1 ? 'selected' : '' }}>Đang hoạt động</option>
                         </select>                 
                     </td>
                     <td>

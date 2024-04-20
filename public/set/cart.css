@@ -269,3 +269,9 @@ input[type="radio"] {
   .bmtn-confirm:hover, .btn-delete:hover, .btn-update:hover{
     scale: 1.05;
   }
+
+
+ .form .approve {
+    border-radius: 10px;
+    margin: 10px 0px 0px 40px;
+  }

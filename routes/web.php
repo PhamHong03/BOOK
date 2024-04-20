@@ -118,11 +118,17 @@ Route::middleware(['admin'])->group(function() {
         Route::get('customers', [AdminCartController::class,'index']);
         Route::get('customers/view/{customer}', [AdminCartController::class, 'show']);
         Route::post('customers/view/{customer}', [AdminCartController::class, 'show']);
+
+        Route::get('customers/edit/{customer}', [AdminCartController::class, 'editCart']);
+        Route::post('customers/edit/{customer}', [AdminCartController::class, 'update']);
+
         Route::DELETE('customers/destroy', [AdminCartController::class, 'destroy'])->name('customers.destroy');
         Route::post('customers/view/delivery', [AdminCartController::class, 'delivery'])->name('delivery');
 
 
         Route::get('approve', [AdminCartController::class, 'approve'])->name('approve');
+        Route::get('cancel', [AdminCartController::class, 'cancel'])->name('cancel');
+        Route::get('wait', [AdminCartController::class, 'wait'])->name('wait');
 
         #account
         Route::get('account', [AuthorController::class, 'account']);

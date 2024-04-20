@@ -15,13 +15,17 @@ class Cart extends Model
         'customer_id',
         'product_id',
         'qty',
-        'price'
+        'price',
+        'status'
                 
     ];
 
     public function product()  {
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
+    // public function status() {
+    //     return $this->hasMany(Status::class,'id', 'ma', 'name');
+    // }
     public function user() {
         return $this->hasOne(User::class, 'id');
     }

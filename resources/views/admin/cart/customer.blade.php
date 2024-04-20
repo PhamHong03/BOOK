@@ -10,6 +10,7 @@
                 <th>Số điện thoại </th>
                 <th>Email </th>
                 <th>Ngày đặt hàng</th>
+                <th>Trạng thái</th>
                 <th style="width: 100px">&nbsp</th>
             </tr>
         </thead>
@@ -23,13 +24,29 @@
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->created_at }}</td>
                     <td>
+                        @if ($customer->status == 0)
+                            <strong style="color: blue">                                
+                                Chờ phê duyệt
+                            </strong>
+                        @elseif($customer->status == 1)
+                            <strong style="color: green">                                
+                                Đã phê duyệt
+                            </strong>
+                        @elseif($customer->status == 2)
+                            <strong style="color: orangered">                                
+                                Đơn bị từ chối
+                            </strong>
+                    
+                    @endif  
+                    </td>
+                    <td>
                         <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}" >
                             <i class="fa-solid fa-eye"> </i> 
                             
                         </a>
-                            {{-- <a class="btn btn-danger btn-sm" href ="#" onclick="removeRow( {{ $customer->id }}, '/admin/customers/destroy')" >
-                                <i class="fa-solid fa-trash"></i>
-                            </a> --}}
+                        <a class="btn btn-danger btn-sm" href ="/admin/customers/edit/{{ $customer->id }}" >
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
                         
                     </td>
                 </tr>

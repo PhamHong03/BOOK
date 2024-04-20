@@ -29,17 +29,57 @@ class AdminCartController extends Controller
     public function show(Customer $customer) {
         
        $carts = $this->cart->getProductForCart($customer);
-         return view('admin.cart.detail', [
+  
+        return view('admin.cart.detail', [
             'title' => 'Chi Tiết Đơn Hàng : ' .$customer->name,
             'customers' => $customer,
             'carts' => $carts          
         ]);
     }
     
-    public function approve(Request $request){
+    public function editCart(Customer $customer){
 
+        $carts = $this->cart->getProductForCart($customer);
+        // dd($customers);
+        return view('admin.cart.edit', [
+            'title' => 'Cập Nhật Trạng Thái',
+            'customers' => $customer,
+            'carts' => $carts
+        ]);
+    }
+
+
+    public function update(Request $request, Customer $customer){
+        $result = $this->cart->update2($request, $customer);
+        // dd($result);
+        if($result) {
+            return redirect('/admin/customers');
+        }
+        return redirect()->back();
+    }
+
+    public function approve(){
+        // $carts = $this->cart->getProductForCart($customer);
+        // dd($customers);
         return view('admin.cart.approve', [
-            'title' => 'Đơn đã duyệt',
+            'title' => 'Danh Sách Đơn Đã Phê Duyệt',
+            'customers' => $this->cart->getCustomer()
+        ]);
+    }
+    public function wait(){
+        // $carts = $this->cart->getProductForCart($customer);
+        // dd($customers);
+        return view('admin.cart.wait', [
+            'title' => 'Danh Sách Đơn Chờ Phê Duyệt',
+            'customers' => $this->cart->getCustomer()
+        ]);
+    }
+    public function cancel(){
+        // $carts = $this->cart->getProductForCart($customer);
+        // dd($customers);
+        return view('admin.cart.cancel', [
+            'title' => 'Danh Sách Đơn Không Đủ Điều Kiện',
+            'customers' => $this->cart->getCustomer()
         ]);
     }
 

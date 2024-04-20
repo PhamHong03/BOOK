@@ -131,11 +131,24 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/admin/wait" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Đơn chờ</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/admin/approve" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Đơn hàng đã duyệt</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/admin/cancel" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Đơn hàng đã hủy</p>
+                </a>
+              </li>
+              
             </ul>
           </li>
       

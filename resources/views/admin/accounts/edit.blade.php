@@ -23,7 +23,6 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                        {{-- <input type="text" value="{{ $user->role }}" style="width: 50px" > --}}
                         <select name="role" id="" class="p-1" >
                             <option value="" class="disible">Vai trò</option>
                             <option value="0" {{ $user->role == 0 ? 'selected' : '' }}>Khách hàng</option>
@@ -31,7 +30,6 @@
                         </select>                        
                     </td>
                     <td>
-                        {{-- <input type="text" value="{{ $user->active }}" style="width: 50px" > --}}
 
                         <select name="active" id="" class="p-1">
                             <option value="">Trạng thái</option>

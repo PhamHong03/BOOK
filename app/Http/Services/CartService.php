@@ -78,6 +78,23 @@ class CartService
         return true;
     }    
   
+    public function update2($request, $customer){
+        try{
+            
+            $customer->status = $request->input('status');
+            // dd($customer->status);
+            $customer->save();
+            Session::flash('success', 'Cập nhật thành công');
+        }catch(\Exception $err) {
+            dd($err);
+            Session::flash('error', 'Cập nhật lỗi vui lòng thử lại');
+
+            Log::info($err->getMessage());
+
+            return false;
+        }
+        return true;
+    }
 
     public function  removeAll($request) {
         $carts = Session::get('carts');                

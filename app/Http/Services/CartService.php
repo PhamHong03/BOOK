@@ -206,7 +206,8 @@ class CartService
     }   
 
     public function getCustomer() {
-        return Customer::orderByDesc('id')->paginate(8);
+        // return Customer::orderByDesc('id')->paginate(9);
+        return Customer::orderByDesc('id')->paginate();
     }
 
     
@@ -214,6 +215,12 @@ class CartService
         return $customer->carts()->with(['product' => function($query) {
             $query->select('id', 'name', 'thumnb');
         }])->get() ;
+    }
+    
+    public function getCartForUser($user){
+        return $user->cart()->customer()->with(['product' => function($query) {
+            $query->select('id', 'name', 'thumnb');
+        }])->get();
     }
     
 

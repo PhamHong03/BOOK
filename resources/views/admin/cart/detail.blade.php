@@ -2,7 +2,7 @@
 
 
 @section('content')
-<form method="GET" id="form" class="form">
+<form method="" id="form" class="form">
     <div class="customer mt-2">
         
         <ul>

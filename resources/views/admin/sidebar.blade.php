@@ -143,6 +143,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/admin/giaodon" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Đơn hàng đã giao</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/admin/cancel" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Đơn hàng đã hủy</p>
@@ -182,6 +188,12 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin/thongke" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thống kê đơn hàng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/doanhthu" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thống kê doanh thu</p>
                 </a>

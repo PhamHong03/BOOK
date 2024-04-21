@@ -61,6 +61,7 @@ class ProductController extends Controller
         ]);
     }
 
+    
     public function edit(string $id)
     {
         //
@@ -97,8 +98,8 @@ class ProductController extends Controller
     }
 
     public function  thongke() {
-        return view('admin.thongke', [
-            'title' => 'Thống kê'
+        return view('admin.sanphamtk', [
+            'title' => 'Thống kê sach'
         ]);
     }
 }

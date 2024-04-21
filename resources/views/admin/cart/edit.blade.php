@@ -18,15 +18,11 @@
             <li>Email : <strong>{{ $customers->email }}</strong></li>
             <li>Ghi chú : <strong>{{ $customers->content }}</strong></li>
             <li>Trạng thái :
-                {{-- @if ($customers->status == 1)
-                    <strong>Đã phê duyệt</strong>
-                @elseif ($customers->status == 0)
-                <strong>Chờ phê duyệt</strong>
-                @endif --}}
                 <select name="status" id="" class="p-1" >
                     <option style="color: blue" value="0" {{ $customers->status == 0 ? 'selected' : '' }}>Chờ phê duyệt</option>
                     <option style="color: green" value="1" {{ $customers->status == 1 ? 'selected' : '' }}>Duyệt đơn</option>
-                    <option style="color: orangered" value="2" {{ $customers->status == 1 ? 'selected' : '' }}>Không đủ điều kiện</option>
+                    <option style="color: orangered" value="2" {{ $customers->status == 2 ? 'selected' : '' }}>Không đủ điều kiện</option>
+                    <option style="color: purple" value="3" {{ $customers->status == 3 ? 'selected' : '' }}>Giao đơn</option>
                 </select> 
             </li>
         </ul>
@@ -107,13 +103,13 @@
                 </tbody>
             </table>
         </div>
-        <button class=" btn btn-success " type="submit" id="btn-delivery" style="float: right">Xác nhận phê duyệt</button>        
+        <button class=" btn btn-success mb-2" type="submit" id="btn-delivery"  style="float: right" >Xác Nhận</button>        
     </div>
     @csrf
 </form>
 @endsection              
            
-{{-- <script>
+<script>
     function duyetdon(event) {
         console.log("Helllo peter");
         event.preventDefault()
@@ -155,4 +151,4 @@
             });
         };
 
-</script> --}}
+</script>

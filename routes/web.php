@@ -129,6 +129,7 @@ Route::middleware(['admin'])->group(function() {
         Route::get('approve', [AdminCartController::class, 'approve'])->name('approve');
         Route::get('cancel', [AdminCartController::class, 'cancel'])->name('cancel');
         Route::get('wait', [AdminCartController::class, 'wait'])->name('wait');
+        Route::get('giaodon', [AdminCartController::class, 'giaodon'])->name('giaodon');
 
         #account
         Route::get('account', [AuthorController::class, 'account']);
@@ -136,7 +137,8 @@ Route::middleware(['admin'])->group(function() {
         Route::post('account/edit/{user}', [AuthorController::class, 'update']);
 
         #thongke
-        Route::get('thongke', [ProductController::class, 'thongke']);
+        Route::get('thongke', [AdminCartController::class, 'thongke']);
+        Route::get('doanhthu', [AdminCartController::class, 'doanhthu']);
 
     });    
    

@@ -36,14 +36,17 @@
                             <strong style="color: orangered">                                
                                 Đơn bị từ chối
                             </strong>
-                    
-                    @endif  
+                        @elseif($customer->status == 3)
+                            <strong style="color: purple">                                
+                                Đã giao
+                            </strong>                    
+                        @endif  
                     </td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}" >
+                        {{-- <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}" >
                             <i class="fa-solid fa-eye"> </i> 
                             
-                        </a>
+                        </a> --}}
                         <a class="btn btn-danger btn-sm" href ="/admin/customers/edit/{{ $customer->id }}" >
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>

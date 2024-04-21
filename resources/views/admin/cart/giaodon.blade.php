@@ -20,16 +20,16 @@
                     $count = 0;
                 @endphp
                 @foreach ($customers as $key => $customer)          
-                    @if ($customer->status == 2)
+                    @if ($customer->status == 3)
                     <tr>
                         <td>{{ $customer->id }}</td>
                         <td>{{ $customer->name }}</td>
                         <td>{{ $customer->phone }}</td>
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->created_at }}</td>
-                        <td style="color: orangered">
-                            @if ($customer->status == 2)
-                                <strong>Không đủ điều kiện</strong>
+                        <td style="color: purple">
+                            @if ($customer->status == 3)
+                                <strong>Đã giao hàng</strong>
                                 @php
                                     $count++;
                                 @endphp
@@ -52,7 +52,7 @@
             </tbody>
         </table>
         <div class="approve_order">
-            <h3 style="color: orangered" class="p-2">Tổng có {{ $count++ }} đơn không đủ điều kiện</h3>
+            <h3 style="color: purple" class="p-2">Tổng có {{ $count++ }} đơn đã giao</h3>
         </div>
     {{-- @endif --}}
 {!! $customers->links() !!}

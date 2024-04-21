@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -140,6 +141,8 @@ Route::middleware(['admin'])->group(function() {
         Route::get('thongke', [AdminCartController::class, 'thongke']);
         Route::get('doanhthu', [AdminCartController::class, 'doanhthu']);
 
+        #contact
+        Route::get('contact', [AdminContactController::class, 'index'])->name('admin-contact');
     });    
    
 });

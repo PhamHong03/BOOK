@@ -177,6 +177,7 @@
           </li>
               
           
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-chart-simple"></i>
@@ -201,6 +202,24 @@
             </ul>
           </li>
           
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-phone-flip"></i>
+              <p style="margin-left: 7px">
+                Liên Hệ Khách Hàng
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/contact" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách liên hệ</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

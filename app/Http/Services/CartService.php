@@ -3,6 +3,7 @@ namespace App\Http\Services;
 
 use App\Jobs\SendMail;
 use App\Models\Cart;
+use App\Models\Contact;
 use App\Models\Customer;
 use App\Models\OrderDetail;
 use App\Models\Product;
@@ -210,6 +211,10 @@ class CartService
         return Customer::orderByDesc('id')->paginate();
     }
 
+    public function getContact(){
+    
+        return Contact::orderByDesc('id')->paginate();
+    }
     
     public function getProductForCart($customer) {
         return $customer->carts()->with(['product' => function($query) {

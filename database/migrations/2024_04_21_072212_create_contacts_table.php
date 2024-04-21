@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->unsignedBigInteger('ma_tt');
-            $table->foreign('ma_tt')
-                ->references('ma')
-                ->on('statuses')
-                ->onDelete('cascade');
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('problem');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('contacts');
     }
 };

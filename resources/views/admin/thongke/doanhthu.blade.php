@@ -2,67 +2,96 @@
 
 
 @section('content')
-    {{-- <div class="thongke_tong">
+    {{-- @php
+        $count = 0;
+        $countGiao = 0;
+        $day = '';
+    @endphp
+    @foreach ($customers as $customer)
+        
+        @foreach ($carts as $cart )
+            @if ($customer->updated_at)
+                @php
+                    $day = $customer->updated_at;
+                @endphp
+                @if($customer->status == 3)
+                    @if($customer->id === $cart->customer_id)
+                        @php
+                            $count++;
+                            $countGiao+= $cart->qty * $cart->price;
+                        @endphp
+                    @endif
+                @endif    
+            @endif        
+        @endforeach
+    @endforeach
+
+    <div class="thongke_tong">
         <div class="container">
-            <h2 class="title"> Doanh thu đơn hàng</h2>
+            <h2 class="title">Khối Thống Kê Doanh Thu</h2>
         </div>
     
         <div class="thongke">
-            @php
-                $count = 0;
-                $countDuyet = 0;
-            @endphp
-            @foreach ($customers as $customer)
-                @php
-                    
-                @endphp
-                @if ($customer->status == 1)
-                    @php
-                        $countDuyet++;
-                    @endphp
-                
-                @endif
-            @endforeach
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <h2 class="thongke__title">
-                            Tổng số đơn
-                        </h2>
-                        <div class="count count_tong">
-                            {{ $count }} đơn
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <h2 class="thongke__title" style="color: green">
-                            Đơn đã duyệt
-                        </h2>
-                        <div class="count count_duyet">
-                            {{ $countDuyet }} đơn 
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <h2 class="thongke__title" style="color: orangered">
-                            Đơn đã hủy
-                        </h2>
-                        <div class="count count_huy">
-                            {{ $countHuy }} đơn 
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <h2 class="thongke__title" style="color: blue">
-                            Đơn đang chờ
-                        </h2>
-                        <div class="count count_cho">
-                            {{ $countCho }} đơn
-                        </div>
-                    </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    Ngày {{ $day }}
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    Tổng số đơn giao {{ $count/2 }}
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    Tổng doanh thu {{ $countGiao }}
                 </div>
             </div>
         </div>
     </div> --}}
 
-    @foreach ($carts as $cart)
-        <h1>{{ $cart->price }}</h1>
-    @endforeach
+    @php
+        $count = 0;
+        $countGiao = 0;
+        $day = '';
+        $monthRevenue = [];
+
+        foreach ($customers as $customer) {
+            foreach ($carts as $cart) {
+                if ($customer->updated_at) {
+                    $day = $customer->updated_at;
+
+                    if ($customer->status == 3) {
+                        if ($customer->id === $cart->customer_id) {
+                            $month = date('m', strtotime($day));
+                            if (!isset($monthRevenue[$month])) {
+                                $monthRevenue[$month] = 0;
+                            }
+                            $monthRevenue[$month] += $cart->qty * $cart->price;
+                            $count++;
+                            $countGiao++;
+                        }
+                    }
+                }
+            }
+        }
+        // foreach ($monthRevenue as $month => $revenue) {
+        //     echo "Doanh thu tháng $month: $revenue" . PHP_EOL;
+        // }
+    @endphp
+
+    <div class="container">
+        <div class="container">
+            <h2 class="title"> Khối Thống Kê Doanh Thu Theo Tháng</h2>
+        </div>
+
+        <div class="mb-3 mt-3">
+            @foreach ($monthRevenue as $month => $revenue)
+            <div class="doanhthu">
+                <div class="chung month">
+                    Tháng  {{ $month }}
+                </div>
+                <div class="chung revenue">
+                    {{ number_format($revenue) }}đ
+                </div>
+            </div>      
+        @endforeach
+        </div>
+    </div>
 @endsection

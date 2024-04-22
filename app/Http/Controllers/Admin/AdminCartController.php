@@ -10,6 +10,7 @@ use App\Models\Customer;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminCartController extends Controller
@@ -121,25 +122,19 @@ class AdminCartController extends Controller
     public function thongke(){
 
         return view('admin.thongke.thongke', [
-            'title' => 'Thống Kê ',
+            'title' => 'Thống Kê Số Lượng Đơn',
             'customers' => $this->cart->getCustomer()
         ]);
     }
-    public function doanhthu(){
-
-        // $carts = $this->cart->getProductForCart($customer);
-        // dd($carts);
-        $carts = Cart::select('id', 'customer_id', 'product_id', 'qty', 'price');
-        dd($carts);
-        // $carts = DB::table('carts')
-        //     ->join('products', 'id', '=', 'carts.product_id')
-        //     ->join('customers', 'id', '=', 'carts.customer_id')
-        //     ->select('carts.customer_id', 'carts.product_id', 'carts.qty', 'carts.price', 'products.name', 'products.price', 'customers.name', 'customers.email');
-        //     // ->get();
-        // dd($carts);
+    public function dsDoanhthu(){
+        $cart = $this->cart->getCart();
+        // dd($cart);
         return view('admin.thongke.doanhthu', [
-            'title' => 'Doanh Thu',
-            'carts' => $carts
+            'title' => 'Thống Kê Doanh Thu',
+            'customers' => $this->cart->getCustomer(),
+            'carts' => $cart
         ]);
+        
     }
+    
 }

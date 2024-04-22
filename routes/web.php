@@ -139,13 +139,17 @@ Route::middleware(['admin'])->group(function() {
 
         #thongke
         Route::get('thongke', [AdminCartController::class, 'thongke']);
-        Route::get('doanhthu', [AdminCartController::class, 'doanhthu']);
+        Route::get('doanhthu', [AdminCartController::class, 'dsDoanhthu']);
+        
 
+        // Route::get('order', [AdminCartController::class, 'orderCustomer'])->name('order');
+        
         #contact
         Route::get('contact', [AdminContactController::class, 'index'])->name('admin-contact');
     });    
-   
+    
 });
+Route::get('order', [CartController::class, 'orderCustomer'])->name('order');
 
 Route::get('test-email', [MainController::class,'testEmail']);
 
@@ -181,8 +185,8 @@ Route::post('carts/delete', [CartController::class, 'removeAll'])->name('carts/d
 
 // Route::get('carts/order', [CartController::class, 'detailOrder'])->name('carts/detail');
 
-Route::get('order-cart', [OrderController::class, 'order'])->name('order');
-Route::post('order-cart', [OrderController::class, 'order'])->name('order');
+// Route::get('order-cart', [OrderController::class, 'order'])->name('order');
+// Route::post('order-cart', [OrderController::class, 'order'])->name('order');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 

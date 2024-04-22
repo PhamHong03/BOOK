@@ -275,3 +275,112 @@ input[type="radio"] {
     border-radius: 10px;
     margin: 10px 0px 0px 40px;
   }
+
+
+
+  /* chi tiết đơn hàng */
+
+  .cart_order{
+    background-color: #dcdada;
+  }
+  .cartDetail
+  {
+
+    display: flex;
+    margin: 10px 30px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0px;
+  }
+  .cartDetail__left{
+    flex: 50%;
+    
+  }
+  .cartDetail__right{
+    flex: 50%;
+    margin-left: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+  
+.cartDetail__right span{
+    float: right;
+}
+
+.order{
+    display: flex;
+}
+
+
+.cart__order--left{
+    flex: 50%;
+}
+.cart__order--right{
+    flex: 50%;
+}
+.info__order{
+    margin-left: 30px;
+    color: var(--green3) ;
+    font-weight: 600;
+}
+.info__order--detail{
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    color: var(--green3) ;
+    font-weight: 600;
+
+}
+.info__order--detail .span{
+    color: rgb(95, 146, 19);
+}
+
+.address_receive{
+    display: flex;
+}
+
+.cart__order--right .address__title{
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    flex: 50%;
+}
+.cart__order--right .address__detail{
+    font-size: 1rem;
+    flex: 50%;
+}
+
+.customer_infor{
+    display: flex;
+}
+.customer__name{
+    flex: 50%;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.customer__title{
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    flex: 50%;
+}
+.customer__email{
+    flex: 50%;
+}
+.tongtien{
+    border: 1px solid #222;
+    padding: 10px 30px;
+    width: 50%;
+    background-color: var(--green3);
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 1.4rem;
+}
+
+
+.order__off--me{
+    text-align: center;
+    color: #0b3d06;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-top: 20px;
+}

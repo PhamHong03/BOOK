@@ -1,63 +1,143 @@
 @extends('head')
 @section('content')
     <div class="container">
-        <div class="customer mt-2">
-            <ul>
-                <li>Tên khách hàng : <strong>{{ $customers->name }}</strong></li>
-                <li>Số điện thoại : <strong>{{ $customers->phone }}</strong></li>
-                <li>Địa chỉ : <strong>{{ $customers->address }}</strong></li>
-                <li>Email : <strong>{{ $customers->email }}</strong></li>
-                <li>Ghi chú : <strong>{{ $customers->content }}</strong></li>
-            </ul>
-        </div>
         @php
             $total = 0;
             $total_ship = 0;
         @endphp 
-        <div class="cart__admin">
-            <div class="product__cart--admin ">
-                <table class="table cart__admin-table">
-                    <tbody>
-                      <tr >
-                        <th class="column-1 table_admin">HÌNH ẢNH</th>
-                        <th class="column-2 table_admin">TÊN SẢN PHẨM</th>
-                        <th class="column-3 table_admin">GIÁ SẢN PHẨM</th>
-                        <th class="column-4 table_admin">SL</th>
-                        <th class="column-5 table_admin">TỔNG GIÁ</th>
-                      </tr>              
-                    
+        
+        <h3 class="order__off--me">Chi tiết đơn hàng của tôi</h3>
+        @foreach ( $customers as $customer )
+            @if ($customer->email == $users->email)
+                <div class="cartDetail">
+                    <div class="cartDetail__left">
+                        <span><strong>MÃ ĐƠN HÀNG: </strong>{{ $customer->id }}0123456789abc</span>
+                    </div>
+                    <div class="cartDetail__right">
+                        @if ( $customer->status  == 0 )
+                            <span style="color: blue">Chờ xác nhận</span>
+                        @elseif ( $customer->status  == 1)
+                            <span style="color: green">Đã phê duyệt</span>
+                        @elseif ( $customer->status  == 2)
+                            <span style="color: orangered">Đơn hàng của bạn không đủ điều kiện</span>
+                        @elseif ( $customer->status == 3)
+                            <span style="color: purple">Đơn hàng đang trên đường đến bạn</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="order">
+                    <div class="cart__order--left">
                         @foreach ($carts as $key => $cart )         
-                            @php                 
-                                $price = floatval($cart->price) *  $cart->qty;
-                                
-                                $total += $price;
-                                $ship = floatval(42000);
-        
-                                $total_ship = $total + $ship;                        
-                            @endphp          
-                            
-                            <tr class="table_row ">
-                                <td class="column-1 table_admin ">
-                                    <div class="how_itemcart1">
-                                        <img src="{{ $cart->product->thumnb }}" alt="IMG" style="width: 70px">
-                                    </div>
-                                </td>
-                                <td class="column-2 table_admin">{{ $cart->product->name }}</td>
-                                <td class="column-3 table_admin">{{ number_format($cart->price)}}đ</td>
-                                <td class="column-4 table_admin">x{{ $cart->qty }}</td>
-                                <td class="column-3 table_admin">{{ number_format($price) }}đ</td>
-                            </tr>                                    
+                            @if($cart->customer_id == $customer->id)
+                                @php                 
+                                    $price = floatval($cart->price) *  $cart->qty;
+                                    
+                                    $total += $price;
+                                    $ship = floatval(42000);
+    
+                                    $total_ship = $total + $ship;                        
+                                @endphp    
+                                <div class="product__cart product__cart--body ">
+                                    <div class="product__cart--item product__cart--item-img">
+                                        <img src="{{ $cart->product->thumnb  }}" alt="" style="width:100px; height:100px"></div>
+                                    <div class="product__cart--item product__cart--item-con">
+                                        <div class="product__cart--item-cont"><h6>Sách: {{ $cart->product->name  }}</h6></div>                
+                                        <div class="product__cart--item-cont"><span>Số lượng: x{{ $cart->qty }}</span></div>
+                                        <div class="product__cart--item-cont"><span>Thành tiền: {{ number_format($price) }}đ</span></div>
+                                        
+                                    </div>  
+                                </div>     
+                            @endif
                         @endforeach
-                        <tr style="font-size: 1.4rem">
-                            <td colspan="4" class="text-red text-right"><strong>Tổng thanh toán:</strong> </td>
-                            <td style="width:100px"><strong>{{ number_format($total) }}đ</strong></td>
-                        </tr>
+                    </div>
+                    
+                    <div class="cart__order--right">
+                        <div class="customer mt-2">
+                           <div class="customer_infor">
+                                <div class="customer_infor customer__title">
+                                    KHÁCH HÀNG: 
+                                </div>
+                                <div class="customer_infor customer__name">
+                                    {{ $customer->name }}
+                                </div>
+                           </div>
+                           <div class="customer_infor">
+                                <div class="customer_infor customer__title">
+                                    SỐ ĐIỆN THOẠI: 
+                                </div>
+                                <div class="customer_infor customer__name">
+                                    {{ $customer->phone }}
+                                </div>
+                           </div>
+                           <div class="customer_infor">
+                                <div class="customer_infor customer__title">
+                                    EMAIL: 
+                                </div>
+                                <div class="customer_infor customer__email">
+                                    <i>{{ $customer->email }}</i>
+                                </div>
+                           </div>                            
+                           <div class="customer_infor">
+                                <div class="customer_infor customer__title">
+                                    GHI CHÚ: 
+                                </div>
+                                <div class="customer_infor customer__email">
+                                    <i>{{ $customer->content }}</i>
+                                </div>
+                           </div>                            
+                            <div class="address_receive mt-2">
+                                <div class="address__title">
+                                    ĐỊA CHỈ NHẬN HÀNG: 
+                                </div>
+                                <div class="address__detail">
+                                    {{ $customer->address }}
+                                </div>
+                            </div>               
+                            <div class="info__order">
+                                <i class="fa-solid fa-calendar fa-fw"></i>
+                                {{ $customer->created_at }}
+                                
+                            </div>
+                            <div class=" info__order--detail">
+                                <span>Đặt hàng thành công</span>
+                                <span class="span"><i>Đơn hàng đã được đặt</i></span>
+                            </div>
+                            <div class="address_receive mt-5">
+                                <div class="address__title">
+                                    TỔNG THANH TOÁN: 
+                                </div>
+                                <div class="address__detail">
+                                    <span class="tongtien">{{ number_format($total) }}đ</span>
+                                </div>
+                            </div>
+                        </div>
                         
-                    </tbody>
-                </table>
-            </div>
-            <button class=" btn btn-success " id="btn-delivery" style="float: right" onclick="duyetdon(event)">Giao hàng</button>
+                    </div>
+                </div>
+                
+            @endif
+        @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
-        </div>
     </div>
 @endsection

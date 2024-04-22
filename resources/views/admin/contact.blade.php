@@ -30,9 +30,8 @@
                             <i class="fa-solid fa-eye"> </i> 
                             
                         </a> --}}
-                        <a class="btn btn-danger btn-sm" href ="/admin/customers/edit/{{ $contact->id }}" >
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
+                        <a class="btn btn-warning btn-sm" href ="/admin/customers/edit/{{ $contact->id }}" >
+                            <i class="fa-solid fa-reply"></i>                        </a>
                         
                     </td>
                 </tr>

@@ -216,6 +216,14 @@ class CartService
         return Contact::orderByDesc('id')->paginate();
     }
     
+    public function getCart(){
+        
+        return Cart::orderByDesc('customer_id')->paginate();
+    }
+    
+    public function getUser() {
+        return User::selectAll('email')->paginate();
+      }
     public function getProductForCart($customer) {
         return $customer->carts()->with(['product' => function($query) {
             $query->select('id', 'name', 'thumnb');

@@ -7,6 +7,7 @@ use App\Http\Services\CartService;
 use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -76,5 +77,17 @@ class CartController extends Controller
         
         return redirect()->back();
     }
-
+    public function orderCustomer(){
+        $cart = $this->cartService->getCart();
+        $users = Auth::user();
+        // dd($users);
+        return view('carts.order', [
+            'title' => 'Chi Tiết Đơn Hàng',
+            'customers' => $this->cartService->getCustomer(),
+            'carts' => $cart,
+            'users' => $users
+        ]); 
+    }
+    
 }
+

@@ -210,6 +210,10 @@ class CartService
         // return Customer::orderByDesc('id')->paginate(9);
         return Customer::orderByDesc('id')->paginate();
     }
+    public function getCustomerPaginate() {
+        // return Customer::orderByDesc('id')->paginate(9);
+        return Customer::orderByDesc('id')->paginate(8);
+    }
 
     public function getContact(){
     

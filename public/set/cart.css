@@ -306,6 +306,9 @@ input[type="radio"] {
     float: right;
 }
 
+.cartDetail__right button{
+    float: right;
+}
 .order{
     display: flex;
 }

@@ -24,7 +24,7 @@ class AdminCartController extends Controller
     public function index() {
         return view('admin.cart.customer', [
             'title' => 'Danh Sách Đơn Hàng',
-            'customers' => $this->cart->getCustomer()
+            'customers' => $this->cart->getCustomerPaginate()
         ]);
     }
     

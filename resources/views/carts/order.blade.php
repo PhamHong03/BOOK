@@ -10,10 +10,10 @@
         @foreach ( $customers as $customer )
             @if ($customer->email == $users->email)
                 <div class="cartDetail">
-                    <div class="cartDetail__left">
+                    <div class="cartDetail__left mt-2">
                         <span><strong>MÃ ĐƠN HÀNG: </strong>{{ $customer->id }}0123456789abc</span>
                     </div>
-                    <div class="cartDetail__right">
+                    <div class="cartDetail__right mt-2">
                         @if ( $customer->status  == 0 )
                             <span style="color: blue">Chờ xác nhận</span>
                         @elseif ( $customer->status  == 1)
@@ -110,34 +110,45 @@
                                     <span class="tongtien">{{ number_format($total) }}đ</span>
                                 </div>
                             </div>
+                            <div class="cartDetail__right mt-2">
+                                <button class="btn btn-danger" type="submit"><a href="" style="color: white" onclick="huyDon(event)">Hủy đơn</a></button>
+                            </div>
                         </div>
                         
                     </div>
                 </div>
                 
             @endif
-        @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        @endforeach      
     </div>
 @endsection
+
+<script>
+    
+    
+    function huyDon(event) {
+        event.preventDefault()
+        const form = document.querySelector('.form');
+        Swal.fire({
+            title: 'Bạn có chắc muốn hủy không?',
+            text: 'Yêu cầu hủy đơn sẽ gửi đến cửa hàng',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hủy đơn',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // form.setAttribute('action', '/carts/delete');
+                // form.submit();
+                Swal.fire({
+                    title: "Đơn đã hủy",
+                    text: "Đơn hàng này của bạn sẽ không thể khôi phục",
+                    icon: "success"
+                });     
+            }          
+        });        
+    };
+
+   
+</script>

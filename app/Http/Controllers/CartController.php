@@ -80,7 +80,6 @@ class CartController extends Controller
     public function orderCustomer(){
         $cart = $this->cartService->getCart();
         $users = Auth::user();
-        // dd($users);
         return view('carts.order', [
             'title' => 'Chi Tiết Đơn Hàng',
             'customers' => $this->cartService->getCustomer(),

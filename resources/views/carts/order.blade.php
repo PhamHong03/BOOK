@@ -34,7 +34,7 @@
                                     
                                     $total += $price;
                                     $ship = floatval(42000);
-    
+
                                     $total_ship = $total + $ship;                        
                                 @endphp    
                                 <div class="product__cart product__cart--body ">
@@ -46,45 +46,46 @@
                                         <div class="product__cart--item-cont"><span>Thành tiền: {{ number_format($price) }}đ</span></div>
                                         
                                     </div>  
-                                </div>     
+                                </div>  
                             @endif
+
                         @endforeach
                     </div>
                     
                     <div class="cart__order--right">
                         <div class="customer mt-2">
-                           <div class="customer_infor">
+                        <div class="customer_infor">
                                 <div class="customer_infor customer__title">
                                     KHÁCH HÀNG: 
                                 </div>
                                 <div class="customer_infor customer__name">
                                     {{ $customer->name }}
                                 </div>
-                           </div>
-                           <div class="customer_infor">
+                        </div>
+                        <div class="customer_infor">
                                 <div class="customer_infor customer__title">
                                     SỐ ĐIỆN THOẠI: 
                                 </div>
                                 <div class="customer_infor customer__name">
                                     {{ $customer->phone }}
                                 </div>
-                           </div>
-                           <div class="customer_infor">
+                        </div>
+                        <div class="customer_infor">
                                 <div class="customer_infor customer__title">
                                     EMAIL: 
                                 </div>
                                 <div class="customer_infor customer__email">
                                     <i>{{ $customer->email }}</i>
                                 </div>
-                           </div>                            
-                           <div class="customer_infor">
+                        </div>                            
+                        <div class="customer_infor">
                                 <div class="customer_infor customer__title">
                                     GHI CHÚ: 
                                 </div>
                                 <div class="customer_infor customer__email">
                                     <i>{{ $customer->content }}</i>
                                 </div>
-                           </div>                            
+                        </div>                            
                             <div class="address_receive mt-2">
                                 <div class="address__title">
                                     ĐỊA CHỈ NHẬN HÀNG: 
@@ -101,6 +102,7 @@
                             <div class=" info__order--detail">
                                 <span>Đặt hàng thành công</span>
                                 <span class="span"><i>Đơn hàng đã được đặt</i></span>
+                                <span class="hidden"></span>
                             </div>
                             <div class="address_receive mt-5">
                                 <div class="address__title">
@@ -116,8 +118,7 @@
                         </div>
                         
                     </div>
-                </div>
-                
+                </div>            
             @endif
         @endforeach      
     </div>
@@ -125,7 +126,7 @@
 
 <script>
     
-    
+
     function huyDon(event) {
         event.preventDefault()
         const form = document.querySelector('.form');

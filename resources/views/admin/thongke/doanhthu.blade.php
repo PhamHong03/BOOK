@@ -2,56 +2,12 @@
 
 
 @section('content')
-    {{-- @php
-        $count = 0;
-        $countGiao = 0;
-        $day = '';
-    @endphp
-    @foreach ($customers as $customer)
-        
-        @foreach ($carts as $cart )
-            @if ($customer->updated_at)
-                @php
-                    $day = $customer->updated_at;
-                @endphp
-                @if($customer->status == 3)
-                    @if($customer->id === $cart->customer_id)
-                        @php
-                            $count++;
-                            $countGiao+= $cart->qty * $cart->price;
-                        @endphp
-                    @endif
-                @endif    
-            @endif        
-        @endforeach
-    @endforeach
-
-    <div class="thongke_tong">
-        <div class="container">
-            <h2 class="title">Khối Thống Kê Doanh Thu</h2>
-        </div>
-    
-        <div class="thongke">
-            <div class="container">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    Ngày {{ $day }}
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    Tổng số đơn giao {{ $count/2 }}
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    Tổng doanh thu {{ $countGiao }}
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     @php
         $count = 0;
         $countGiao = 0;
         $day = '';
         $monthRevenue = [];
-
         foreach ($customers as $customer) {
             foreach ($carts as $cart) {
                 if ($customer->updated_at) {
@@ -71,14 +27,30 @@
                 }
             }
         }
-        // foreach ($monthRevenue as $month => $revenue) {
-        //     echo "Doanh thu tháng $month: $revenue" . PHP_EOL;
-        // }
+        
     @endphp
 
-    <div class="container">
+    <div class="container thongke_tong_quat">
         <div class="container">
             <h2 class="title"> Khối Thống Kê Doanh Thu Theo Tháng</h2>
+        </div>
+
+        <div class="select__month__year">
+            
+            <div class="select__month">
+                <select name="year" id="">
+                    @for ($i = 1; $i <= 12 ; $i++)
+                        <option value="$i">Tháng {{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
+            <div class="select__year">
+                <select name="year" id="">
+                    @for ($i = 2024; $i >= 2010 ; $i--)
+                        <option value="$i">Năm {{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
         </div>
 
         <div class="mb-3 mt-3">

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\CartService;
 use App\Http\Services\Menu\MenuService;
 use Illuminate\Http\Request;
 use App\Http\Services\Slider\SliderService;
 use App\Http\Services\Product\ProductService;
 use App\Models\Product;
 use App\Models\Menu;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
@@ -15,12 +17,14 @@ class MainController extends Controller
     protected $slider;
     protected $menu;
     protected $product;
+    protected $cart;
 
-    public function __construct(SliderService $slider, MenuService $menu, ProductService $product)
+    public function __construct(SliderService $slider, MenuService $menu, ProductService $product, CartService $cart)
     {
         $this->slider = $slider;
         $this->menu = $menu;
         $this->product = $product;
+        $this->cart = $cart;
     }
 
 
@@ -73,11 +77,13 @@ class MainController extends Controller
    
 
     public function testEmail(){
-
-        $name = 'Phạm Hồng';
-        Mail::send('emails.test', compact('name'), function($email) use($name){
-            $email->subject('Thư cảm ơn');
-            $email->to('hongb2110012@student.ctu.edu.vn', $name);
+        $carts = $this->cart->getCart();
+        $customers = $this->cart->getCustomer();
+        $users = Auth::user();
+        $name = $users->name;
+        Mail::send('emails.test', compact('name', 'carts', 'customers', 'users'), function($email) use($name){
+            $email->subject('HOÁ ĐƠN ĐIỆN TỬ: CỬA HÀNG BÁN SÁCH TRỰC TRUYẾN BOOKSTORE kính gửi KHÁCH HÀNG của BOOKSTORE');
+            $email->to(Auth::user()->email, $name);
         });
     }
 }

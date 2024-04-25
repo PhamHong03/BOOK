@@ -79,7 +79,7 @@ class AuthorController extends Controller
     }
 
     public function account(){
-        $user = User::orderByDesc('id')->paginate(8);
+        $user = User::orderByDesc('id')->paginate(7);
         return view('admin.accounts.account', [
             'title' => 'Danh sách tài khoản người dùng',
             'user' => $user

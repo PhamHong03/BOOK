@@ -133,7 +133,7 @@
               <li class="nav-item">
                 <a href="/admin/wait" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Đơn chờ</p>
+                  <p>Đơn chờ phê duyệt</p>
                 </a>
               </li>
               <li class="nav-item">

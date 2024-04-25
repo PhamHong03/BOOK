@@ -38,7 +38,7 @@
         <div class="select__month__year">
             
             <div class="select__month">
-                <select name="year" id="">
+                <select name="year" id="" class="select__month--select">
                     @for ($i = 1; $i <= 12 ; $i++)
                         <option value="$i">Tháng {{ $i }}</option>
                     @endfor
@@ -46,7 +46,7 @@
             </div>
             <div class="select__year">
                 <select name="year" id="">
-                    @for ($i = 2024; $i >= 2010 ; $i--)
+                    @for ($i = 2024; $i >= 2012 ; $i--)
                         <option value="$i">Năm {{ $i }}</option>
                     @endfor
                 </select>
@@ -55,15 +55,15 @@
 
         <div class="mb-3 mt-3">
             @foreach ($monthRevenue as $month => $revenue)
-            <div class="doanhthu">
-                <div class="chung month">
-                    Tháng  {{ $month }}
-                </div>
-                <div class="chung revenue">
-                    {{ number_format($revenue) }}đ
-                </div>
-            </div>      
-        @endforeach
+                <div class="doanhthu">
+                    <div class="chung month">
+                        Tháng  {{ $month }}
+                    </div>
+                    <div class="chung revenue">
+                        {{ number_format($revenue) }}đ
+                    </div>
+                </div>      
+            @endforeach
         </div>
     </div>
 @endsection

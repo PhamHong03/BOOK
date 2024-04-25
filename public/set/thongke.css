@@ -1,3 +1,18 @@
+.approve_order1 input{
+    margin-left: 15px;
+    margin-right: 10px;
+}
+.approve_order1 span{
+    font-size: 1.2rem;
+}
+.approve_order1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.approve_order1 .right {
+    margin-right: 55px;
+}
 
 .title{
     text-align: center;
@@ -65,29 +80,37 @@
 }
 
 .month{
-    width: 30%;
-    background-color: green;
+    width: 23%;
+    background-color: rgb(106, 168, 106);
 }
 .revenue{
     width: 40%;
-    background-color: palevioletred;
+    background-color: rgb(245, 148, 181);
 }
 .select__month__year{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 .select__year{
     flex: 50%;
     text-align: center;
 }
-.select__year select{
-    float: right;
-}
+
 .select__month{
     flex: 50%;
     text-align: center;
 }
 .select__month__year select{
     padding: 10px 20px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+}
+.select__year select{
+    background-color: rgb(245, 148, 181);
+}
+.select__month select{
+    background-color: rgb(106, 168, 106);
+
 }

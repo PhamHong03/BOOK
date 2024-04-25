@@ -117,7 +117,7 @@
 ">    
 
     <h2>Xin chào {{  $name }}</h2>
-    <h3>Chúng tôi xin gửi hóa đơn đặt hàng đến bạn</h3>
+    <h3>Đại diện cho BookStore chúng tôi xin gửi hóa đơn đặt hàng đến bạn</h3>
     
 </div>
     @php

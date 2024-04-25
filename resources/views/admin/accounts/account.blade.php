@@ -49,5 +49,5 @@
             @endforeach
         </tbody>
     </table>
-{{-- {!! $u->links() !!} --}}
+{!! $user->links() !!}
 @endsection

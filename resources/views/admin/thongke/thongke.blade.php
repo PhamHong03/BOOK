@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                        <h2 class="thongke__title" style="color: green">
+                        <h2 class="thongke__title" style="color: purple">
                             Đơn đã giao
                         </h2>
                         <div class="count count_giao">
